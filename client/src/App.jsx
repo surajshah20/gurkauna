@@ -11,6 +11,8 @@ import CheckoutPage from './pages/CheckoutPage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import AccountPage from './pages/AccountPage';
+import CollectionsPage from './pages/CollectionsPage';
+import WhyGurkaunaPage from './pages/WhyGurkaunaPage';
 
 import './App.css';
 
@@ -164,6 +166,10 @@ export default function App() {
           />
         )}
 
+        {activePage === 'collections' && (
+          <CollectionsPage setActivePage={setActivePage} />
+        )}
+
         {activePage === 'detail' && (
           <ProductDetailPage
             product={selectedProduct}
@@ -183,6 +189,11 @@ export default function App() {
             onRemoveItem={handleRemoveCartItem}
             onGoToCheckout={() => setActivePage('checkout')}
             setActivePage={setActivePage}
+            products={products}
+            onSelectProduct={handleSelectProduct}
+            onAddToCart={handleAddToCart}
+            wishlist={wishlist}
+            onToggleWishlist={handleToggleWishlist}
           />
         )}
 
@@ -191,11 +202,20 @@ export default function App() {
             cartItems={cart}
             onClearCart={() => setCart([])}
             setActivePage={setActivePage}
+            products={products}
+            onSelectProduct={handleSelectProduct}
+            onAddToCart={handleAddToCart}
+            wishlist={wishlist}
+            onToggleWishlist={handleToggleWishlist}
           />
         )}
 
         {activePage === 'about' && (
           <AboutPage setActivePage={setActivePage} />
+        )}
+
+        {activePage === 'why-gurkauna' && (
+          <WhyGurkaunaPage setActivePage={setActivePage} />
         )}
 
         {activePage === 'contact' && (

@@ -54,7 +54,7 @@ export default function Navbar({ activePage, setActivePage, cartCount, wishlistC
             <li>
               <button
                 className={`nav-link ${activePage === 'collections' ? 'active' : ''}`}
-                onClick={() => handleNavClick('shop')}
+                onClick={() => handleNavClick('collections')}
               >
                 Collections
               </button>
@@ -70,7 +70,7 @@ export default function Navbar({ activePage, setActivePage, cartCount, wishlistC
             <li>
               <button
                 className={`nav-link ${activePage === 'why-gurkauna' ? 'active' : ''}`}
-                onClick={() => handleNavClick('home')}
+                onClick={() => handleNavClick('why-gurkauna')}
               >
                 Why Gurkauna
               </button>
@@ -141,7 +141,7 @@ export default function Navbar({ activePage, setActivePage, cartCount, wishlistC
                 </button>
               </li>
               <li>
-                <button onClick={() => handleNavClick('shop')}>
+                <button onClick={() => handleNavClick('collections')} className={activePage === 'collections' ? 'active' : ''}>
                   Collections
                 </button>
               </li>
@@ -151,7 +151,7 @@ export default function Navbar({ activePage, setActivePage, cartCount, wishlistC
                 </button>
               </li>
               <li>
-                <button onClick={() => handleNavClick('home')}>
+                <button onClick={() => handleNavClick('why-gurkauna')} className={activePage === 'why-gurkauna' ? 'active' : ''}>
                   Why Gurkauna
                 </button>
               </li>
