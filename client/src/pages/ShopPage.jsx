@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { Filter, X, ChevronDown, ChevronUp, ShieldCheck, Compass, Truck, Headphones } from 'lucide-react';
 import ProductCard from '../components/ProductCard';
+import { PLACEHOLDER_IMAGES } from '../config/images';
 
 export default function ShopPage({ products = [], onSelectProduct, onAddToCart, wishlist = [], onToggleWishlist }) {
   // Category tabs state
@@ -68,12 +69,12 @@ export default function ShopPage({ products = [], onSelectProduct, onAddToCart, 
         rating: 4.9,
         sizes: ['20"', '24"', '28"'],
         colors: [
-          { name: 'Forest Green', hex: '#1C3F34', image: 'https://images.unsplash.com/photo-1581553680321-4fffae59febd?auto=format&fit=crop&w=800&q=80' },
-          { name: 'Midnight Black', hex: '#1C1C1E', image: 'https://images.unsplash.com/photo-1565026057447-b8899f2905a7?auto=format&fit=crop&w=800&q=80' },
-          { name: 'Navy Blue', hex: '#1B2A4A', image: 'https://images.unsplash.com/photo-1565026057447-b8899f2905a7?auto=format&fit=crop&w=800&q=80' },
-          { name: 'Rose Gold', hex: '#E8A29A', image: 'https://images.unsplash.com/photo-1581553680321-4fffae59febd?auto=format&fit=crop&w=800&q=80' }
+          { name: 'Forest Green', hex: '#1C3F34', image: PLACEHOLDER_IMAGES.productGreen },
+          { name: 'Midnight Black', hex: '#1C1C1E', image: PLACEHOLDER_IMAGES.productBlack },
+          { name: 'Navy Blue', hex: '#1B2A4A', image: PLACEHOLDER_IMAGES.productBlack },
+          { name: 'Rose Gold', hex: '#E8A29A', image: PLACEHOLDER_IMAGES.productGreen }
         ],
-        image: 'https://images.unsplash.com/photo-1581553680321-4fffae59febd?auto=format&fit=crop&w=800&q=80'
+        image: PLACEHOLDER_IMAGES.productGreen
       },
       {
         id: 'gurkauna-elite',
@@ -88,11 +89,11 @@ export default function ShopPage({ products = [], onSelectProduct, onAddToCart, 
         rating: 5.0,
         sizes: ['20"', '24"', '28"'],
         colors: [
-          { name: 'Midnight Black', hex: '#1C1C1E', image: 'https://images.unsplash.com/photo-1565026057447-b8899f2905a7?auto=format&fit=crop&w=800&q=80' },
-          { name: 'Titanium Silver', hex: '#D1D5DB', image: 'https://images.unsplash.com/photo-1565026057447-b8899f2905a7?auto=format&fit=crop&w=800&q=80' },
-          { name: 'Warm Beige', hex: '#E5D9C5', image: 'https://images.unsplash.com/photo-1565026057447-b8899f2905a7?auto=format&fit=crop&w=800&q=80' }
+          { name: 'Midnight Black', hex: '#1C1C1E', image: PLACEHOLDER_IMAGES.productBlack },
+          { name: 'Titanium Silver', hex: '#D1D5DB', image: PLACEHOLDER_IMAGES.productBlack },
+          { name: 'Warm Beige', hex: '#E5D9C5', image: PLACEHOLDER_IMAGES.productBlack }
         ],
-        image: 'https://images.unsplash.com/photo-1565026057447-b8899f2905a7?auto=format&fit=crop&w=800&q=80'
+        image: PLACEHOLDER_IMAGES.productBlack
       },
       {
         id: 'gurkauna-classic',
@@ -107,11 +108,11 @@ export default function ShopPage({ products = [], onSelectProduct, onAddToCart, 
         rating: 4.8,
         sizes: ['20"', '24"', '28"'],
         colors: [
-          { name: 'Coral Pink', hex: '#E8A29A', image: 'https://images.unsplash.com/photo-1581553680321-4fffae59febd?auto=format&fit=crop&w=800&q=80' },
-          { name: 'Midnight Black', hex: '#1C1C1E', image: 'https://images.unsplash.com/photo-1565026057447-b8899f2905a7?auto=format&fit=crop&w=800&q=80' },
-          { name: 'Navy Blue', hex: '#1B2A4A', image: 'https://images.unsplash.com/photo-1565026057447-b8899f2905a7?auto=format&fit=crop&w=800&q=80' }
+          { name: 'Coral Pink', hex: '#E8A29A', image: PLACEHOLDER_IMAGES.productGreen },
+          { name: 'Midnight Black', hex: '#1C1C1E', image: PLACEHOLDER_IMAGES.productBlack },
+          { name: 'Navy Blue', hex: '#1B2A4A', image: PLACEHOLDER_IMAGES.productBlack }
         ],
-        image: 'https://images.unsplash.com/photo-1581553680321-4fffae59febd?auto=format&fit=crop&w=800&q=80'
+        image: PLACEHOLDER_IMAGES.productGreen
       },
       {
         id: 'gurkauna-voyager',
@@ -126,11 +127,11 @@ export default function ShopPage({ products = [], onSelectProduct, onAddToCart, 
         rating: 4.7,
         sizes: ['20"', '24"', '28"'],
         colors: [
-          { name: 'Navy Blue', hex: '#1B2A4A', image: 'https://images.unsplash.com/photo-1565026057447-b8899f2905a7?auto=format&fit=crop&w=800&q=80' },
-          { name: 'Midnight Black', hex: '#1C1C1E', image: 'https://images.unsplash.com/photo-1565026057447-b8899f2905a7?auto=format&fit=crop&w=800&q=80' },
-          { name: 'Forest Green', hex: '#1C3F34', image: 'https://images.unsplash.com/photo-1581553680321-4fffae59febd?auto=format&fit=crop&w=800&q=80' }
+          { name: 'Navy Blue', hex: '#1B2A4A', image: PLACEHOLDER_IMAGES.productBlack },
+          { name: 'Midnight Black', hex: '#1C1C1E', image: PLACEHOLDER_IMAGES.productBlack },
+          { name: 'Forest Green', hex: '#1C3F34', image: PLACEHOLDER_IMAGES.productGreen }
         ],
-        image: 'https://images.unsplash.com/photo-1565026057447-b8899f2905a7?auto=format&fit=crop&w=800&q=80'
+        image: PLACEHOLDER_IMAGES.productBlack
       },
       {
         id: 'gurkauna-premium',
@@ -145,10 +146,10 @@ export default function ShopPage({ products = [], onSelectProduct, onAddToCart, 
         rating: 4.9,
         sizes: ['20"', '24"', '28"'],
         colors: [
-          { name: 'Titanium Silver', hex: '#D1D5DB', image: 'https://images.unsplash.com/photo-1565026057447-b8899f2905a7?auto=format&fit=crop&w=800&q=80' },
-          { name: 'Midnight Black', hex: '#1C1C1E', image: 'https://images.unsplash.com/photo-1565026057447-b8899f2905a7?auto=format&fit=crop&w=800&q=80' }
+          { name: 'Titanium Silver', hex: '#D1D5DB', image: PLACEHOLDER_IMAGES.productBlack },
+          { name: 'Midnight Black', hex: '#1C1C1E', image: PLACEHOLDER_IMAGES.productBlack }
         ],
-        image: 'https://images.unsplash.com/photo-1565026057447-b8899f2905a7?auto=format&fit=crop&w=800&q=80'
+        image: PLACEHOLDER_IMAGES.productBlack
       },
       {
         id: 'gurkauna-travel-set',
@@ -163,12 +164,12 @@ export default function ShopPage({ products = [], onSelectProduct, onAddToCart, 
         rating: 5.0,
         sizes: ['20" + 24" + 28"'],
         colors: [
-          { name: 'Forest Green', hex: '#1C3F34', image: 'https://images.unsplash.com/photo-1581553680321-4fffae59febd?auto=format&fit=crop&w=800&q=80' },
-          { name: 'Midnight Black', hex: '#1C1C1E', image: 'https://images.unsplash.com/photo-1565026057447-b8899f2905a7?auto=format&fit=crop&w=800&q=80' },
-          { name: 'Navy Blue', hex: '#1B2A4A', image: 'https://images.unsplash.com/photo-1565026057447-b8899f2905a7?auto=format&fit=crop&w=800&q=80' },
-          { name: 'Rose Gold', hex: '#E8A29A', image: 'https://images.unsplash.com/photo-1581553680321-4fffae59febd?auto=format&fit=crop&w=800&q=80' }
+          { name: 'Forest Green', hex: '#1C3F34', image: PLACEHOLDER_IMAGES.productGreen },
+          { name: 'Midnight Black', hex: '#1C1C1E', image: PLACEHOLDER_IMAGES.productBlack },
+          { name: 'Navy Blue', hex: '#1B2A4A', image: PLACEHOLDER_IMAGES.productBlack },
+          { name: 'Rose Gold', hex: '#E8A29A', image: PLACEHOLDER_IMAGES.productGreen }
         ],
-        image: 'https://images.unsplash.com/photo-1581553680321-4fffae59febd?auto=format&fit=crop&w=800&q=80'
+        image: PLACEHOLDER_IMAGES.productGreen
       }
     ];
   }, [products]);
@@ -229,10 +230,27 @@ export default function ShopPage({ products = [], onSelectProduct, onAddToCart, 
 
   return (
     <div className="shop-page-wrapper">
+      <style dangerouslySetInnerHTML={{__html: `
+        .shop-products-grid {
+          display: grid;
+          grid-template-columns: repeat(1, 1fr);
+          gap: 24px;
+        }
+        @media (min-width: 600px) {
+          .shop-products-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+        }
+        @media (min-width: 1024px) {
+          .shop-products-grid {
+            grid-template-columns: repeat(3, 1fr) !important;
+          }
+        }
+      `}} />
       {/* ---------------------------------------------------- */}
       {/* 1. PREMIUM SHOP HERO HEADER */}
       {/* ---------------------------------------------------- */}
-      <section className="shop-hero">
+      <section className="shop-hero" style={{ backgroundImage: `url(${PLACEHOLDER_IMAGES.heroMain})` }}>
         <div className="shop-hero-overlay" />
         <div className="shop-hero-container">
           <span className="shop-hero-eyebrow">SHOP OUR COLLECTION</span>

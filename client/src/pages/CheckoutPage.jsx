@@ -126,7 +126,7 @@ export default function CheckoutPage({
         </div>
 
         {/* 2-Column Grid */}
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px', display: 'grid', gridTemplateColumns: '1fr', '@media (minWidth: 768px)': { gridTemplateColumns: '1fr 1fr' }, gap: '32px' }}>
+        <div className="checkout-success-grid" style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px', display: 'grid', gap: '32px' }}>
            
            {/* Left Column */}
            <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
@@ -278,12 +278,12 @@ export default function CheckoutPage({
              <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.6rem', fontWeight: '500', color: 'var(--color-dark)', marginBottom: '8px' }}>What Happens Next?</h3>
              <p style={{ fontSize: '0.9rem', color: '#71717A', marginBottom: '40px' }}>We'll keep you updated at every step.</p>
 
-             <div style={{ display: 'flex', justifyContent: 'space-between', position: 'relative' }}>
+             <div className="timeline-flex" style={{ display: 'flex', justifyContent: 'space-between', position: 'relative' }}>
                 {/* Connecting Line */}
-                <div style={{ position: 'absolute', top: '16px', left: '10%', right: '10%', height: '1px', background: '#D4D4D8', zIndex: 0 }}></div>
+                <div className="timeline-line" style={{ position: 'absolute', top: '16px', left: '10%', right: '10%', height: '1px', background: '#D4D4D8', zIndex: 0 }}></div>
                 
                 {/* Step 1 */}
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', zIndex: 1, width: '25%' }}>
+                <div className="timeline-step-item" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', zIndex: 1, width: '25%' }}>
                    <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: 'var(--color-brand)', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '16px' }}>
                      <Check size={16} strokeWidth={3} />
                    </div>
@@ -292,7 +292,7 @@ export default function CheckoutPage({
                 </div>
 
                 {/* Step 2 */}
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', zIndex: 1, width: '25%' }}>
+                <div className="timeline-step-item" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', zIndex: 1, width: '25%' }}>
                    <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: 'white', border: '1px solid #D4D4D8', color: '#71717A', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '16px' }}>
                      <Package size={14} />
                    </div>
@@ -301,7 +301,7 @@ export default function CheckoutPage({
                 </div>
 
                 {/* Step 3 */}
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', zIndex: 1, width: '25%' }}>
+                <div className="timeline-step-item" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', zIndex: 1, width: '25%' }}>
                    <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: 'white', border: '1px solid #D4D4D8', color: '#71717A', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '16px' }}>
                      <Truck size={14} />
                    </div>
@@ -310,7 +310,7 @@ export default function CheckoutPage({
                 </div>
 
                 {/* Step 4 */}
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', zIndex: 1, width: '25%' }}>
+                <div className="timeline-step-item" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', zIndex: 1, width: '25%' }}>
                    <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: 'white', border: '1px solid #D4D4D8', color: '#71717A', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '16px' }}>
                      <Home size={14} />
                    </div>
@@ -329,6 +329,37 @@ export default function CheckoutPage({
   // --- CHECKOUT PAGE ---
   return (
     <div style={{ backgroundColor: '#FAFAFA', minHeight: '100vh', paddingBottom: '80px', paddingTop: '40px' }}>
+      <style dangerouslySetInnerHTML={{__html: `
+        .checkout-success-grid {
+          grid-template-columns: 1fr;
+        }
+        .checkout-main-grid {
+          grid-template-columns: 1fr;
+        }
+        .shipping-form-grid {
+          grid-template-columns: 1fr;
+        }
+        .timeline-flex {
+          flex-direction: column;
+          gap: 24px;
+        }
+        .timeline-step-item {
+          width: 100% !important;
+        }
+        .timeline-line {
+          display: none;
+        }
+        @media (min-width: 768px) {
+          .checkout-success-grid { grid-template-columns: 1fr 1fr; }
+          .shipping-form-grid { grid-template-columns: 1fr 1fr; }
+          .timeline-flex { flex-direction: row; }
+          .timeline-step-item { width: 25% !important; }
+          .timeline-line { display: block; }
+        }
+        @media (min-width: 1024px) {
+          .checkout-main-grid { grid-template-columns: 1fr 440px; }
+        }
+      `}} />
       
       {/* Header */}
       <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px', marginBottom: '40px' }}>
@@ -357,7 +388,7 @@ export default function CheckoutPage({
         </div>
       </div>
 
-      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px', display: 'grid', gridTemplateColumns: '1fr', '@media (minWidth: 1024px)': { gridTemplateColumns: '1fr 440px' }, gap: '40px', alignItems: 'start' }}>
+      <div className="checkout-main-grid" style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px', display: 'grid', gap: '40px', alignItems: 'start' }}>
         
         {/* Left Column */}
         <form onSubmit={handleSubmitOrder} style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
@@ -372,7 +403,7 @@ export default function CheckoutPage({
               </div>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginLeft: '44px' }}>
+            <div className="shipping-form-grid" style={{ display: 'grid', gap: '20px', marginLeft: '44px' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
                 <label style={{ fontSize: '0.85rem', fontWeight: '600', color: 'var(--color-dark)' }}>Full Name <span style={{ color: 'var(--color-brand)' }}>*</span></label>
                 <input type="text" required value={formData.fullName} onChange={e => setFormData({...formData, fullName: e.target.value})} style={{ padding: '12px', border: '1px solid #D4D4D8', borderRadius: 'var(--radius-sm)', fontSize: '0.9rem' }} placeholder="John Doe" />

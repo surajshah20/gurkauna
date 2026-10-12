@@ -26,9 +26,9 @@ const products = [
     material: 'ABS',
     inStock: true,
     colors: [
-      { name: 'Midnight Black', hex: '#1C1C1E', image: 'https://images.unsplash.com/photo-1565026057447-b8899f2905a7?auto=format&fit=crop&w=800&q=80' },
-      { name: 'Forest Green', hex: '#1C3F34', image: 'https://images.unsplash.com/photo-1581553680321-4fffae59febd?auto=format&fit=crop&w=800&q=80' },
-      { name: 'Navy Blue', hex: '#1B2A4A', image: 'https://images.unsplash.com/photo-1565026057447-b8899f2905a7?auto=format&fit=crop&w=800&q=80' },
+      { name: 'Midnight Black', hex: '#1C1C1E', image: '/images/luggage-black.png' },
+      { name: 'Forest Green', hex: '#1C3F34', image: '/images/luggage-green.png' },
+      { name: 'Navy Blue', hex: '#1B2A4A', image: '/images/luggage-blue.png' },
     ],
     sizes: ['20" (Cabin)', '24" (Medium)', '28" (Large)'],
     description: 'The Gurkauna Classic is engineered for everyday explorers. Crafted from lightweight yet impact-resistant ABS shell, it features whisper-quiet 360° spinner wheels and a secure TSA combination lock.',
@@ -39,7 +39,7 @@ const products = [
       'Telescopic Ergonomic Aluminium Handle',
       'Full Zipper Mesh Divider & Compression Straps'
     ],
-    image: 'https://images.unsplash.com/photo-1565026057447-b8899f2905a7?auto=format&fit=crop&w=800&q=80'
+    image: '/images/luggage-black.png'
   },
   {
     id: 'gurkauna-pro',
@@ -55,10 +55,10 @@ const products = [
     material: 'PC + ABS',
     inStock: true,
     colors: [
-      { name: 'Forest Green', hex: '#1C3F34', image: 'https://images.unsplash.com/photo-1581553680321-4fffae59febd?auto=format&fit=crop&w=800&q=80' },
-      { name: 'Midnight Black', hex: '#1C1C1E', image: 'https://images.unsplash.com/photo-1565026057447-b8899f2905a7?auto=format&fit=crop&w=800&q=80' },
-      { name: 'Navy Blue', hex: '#1B2A4A', image: 'https://images.unsplash.com/photo-1565026057447-b8899f2905a7?auto=format&fit=crop&w=800&q=80' },
-      { name: 'Rose Gold', hex: '#B87333', image: 'https://images.unsplash.com/photo-1581553680321-4fffae59febd?auto=format&fit=crop&w=800&q=80' }
+      { name: 'Forest Green', hex: '#1C3F34', image: '/images/luggage-green.png' },
+      { name: 'Midnight Black', hex: '#1C1C1E', image: '/images/luggage-black.png' },
+      { name: 'Navy Blue', hex: '#1B2A4A', image: '/images/luggage-blue.png' },
+      { name: 'Rose Gold', hex: '#B87333', image: '/images/luggage-green.png' }
     ],
     sizes: ['20" (Cabin)', '24" (Medium)', '28" (Large)'],
     description: 'The Gurkauna Pro combines maximum durability, sleek modern aesthetic, and ultra-smooth mobility. Built with premium Bayer Polycarbonate + ABS composite that withstands tough mountain transit.',
@@ -69,7 +69,7 @@ const products = [
       'Reinforced Corner Armor Guards',
       'Water-Resistant Zipper Lining'
     ],
-    image: 'https://images.unsplash.com/photo-1581553680321-4fffae59febd?auto=format&fit=crop&w=800&q=80'
+    image: '/images/luggage-green.png'
   },
   {
     id: 'gurkauna-elite',
@@ -85,9 +85,9 @@ const products = [
     material: 'Polycarbonate',
     inStock: true,
     colors: [
-      { name: 'Navy Blue', hex: '#1B2A4A', image: 'https://images.unsplash.com/photo-1565026057447-b8899f2905a7?auto=format&fit=crop&w=800&q=80' },
-      { name: 'Forest Green', hex: '#1C3F34', image: 'https://images.unsplash.com/photo-1581553680321-4fffae59febd?auto=format&fit=crop&w=800&q=80' },
-      { name: 'Titanium Silver', hex: '#A8A9AD', image: 'https://images.unsplash.com/photo-1565026057447-b8899f2905a7?auto=format&fit=crop&w=800&q=80' }
+      { name: 'Navy Blue', hex: '#1B2A4A', image: '/images/luggage-blue.png' },
+      { name: 'Forest Green', hex: '#1C3F34', image: '/images/luggage-green.png' },
+      { name: 'Titanium Silver', hex: '#A8A9AD', image: '/images/luggage-black.png' }
     ],
     sizes: ['20" (Cabin)', '24" (Medium)', '28" (Large)'],
     description: 'Designed for frequent flyers and Himalayan expeditions, the Gurkauna Elite delivers ultra-lightweight strength with pure German Polycarbonate, custom internal organization, and lifetime guarantee.',
@@ -98,7 +98,7 @@ const products = [
       'Detachable Compression Divider Pad',
       'Integrated Digital Scale Handle'
     ],
-    image: 'https://images.unsplash.com/photo-1565026057447-b8899f2905a7?auto=format&fit=crop&w=800&q=80'
+    image: '/images/luggage-blue.png'
   },
   {
     id: 'gurkauna-premium',
@@ -114,8 +114,8 @@ const products = [
     material: 'Aluminium',
     inStock: true,
     colors: [
-      { name: 'Midnight Black', hex: '#1C1C1E', image: 'https://images.unsplash.com/photo-1565026057447-b8899f2905a7?auto=format&fit=crop&w=800&q=80' },
-      { name: 'Forest Green', hex: '#1C3F34', image: 'https://images.unsplash.com/photo-1581553680321-4fffae59febd?auto=format&fit=crop&w=800&q=80' }
+      { name: 'Midnight Black', hex: '#1C1C1E', image: '/images/luggage-black.png' },
+      { name: 'Forest Green', hex: '#1C3F34', image: '/images/luggage-green.png' }
     ],
     sizes: ['20" (Cabin)', '24" (Medium)', '28" (Large)'],
     description: 'Our top-of-the-line flagship luggage crafted from aviation grade aluminium-magnesium alloy. Indestructible corner protection and timeless luxury silhouette.',
@@ -125,7 +125,7 @@ const products = [
       'Slow-Release Leather Inset Top & Side Handles',
       'Luxury Satin Internal Lining with Garment Hook'
     ],
-    image: 'https://images.unsplash.com/photo-1565026057447-b8899f2905a7?auto=format&fit=crop&w=800&q=80'
+    image: '/images/luggage-black.png'
   },
   {
     id: 'gurkauna-soft',
@@ -141,8 +141,8 @@ const products = [
     material: 'Cordura Nylon',
     inStock: true,
     colors: [
-      { name: 'Midnight Black', hex: '#1C1C1E', image: 'https://images.unsplash.com/photo-1581553680321-4fffae59febd?auto=format&fit=crop&w=800&q=80' },
-      { name: 'Navy Blue', hex: '#1B2A4A', image: 'https://images.unsplash.com/photo-1565026057447-b8899f2905a7?auto=format&fit=crop&w=800&q=80' }
+      { name: 'Midnight Black', hex: '#1C1C1E', image: '/images/luggage-black.png' },
+      { name: 'Navy Blue', hex: '#1B2A4A', image: '/images/luggage-blue.png' }
     ],
     sizes: ['20" (Cabin)', '24" (Medium)', '28" (Large)'],
     description: 'Maximum expandable packing capability with quick-access front pockets for laptops, passports, and travel documents.',
@@ -152,7 +152,7 @@ const products = [
       '2-Inch Zipper Expansion System (+25% capacity)',
       'Reinforced Bottom Skid Plate Protection'
     ],
-    image: 'https://images.unsplash.com/photo-1581553680321-4fffae59febd?auto=format&fit=crop&w=800&q=80'
+    image: '/images/luggage-black.png'
   },
   {
     id: 'gurkauna-travel-set',
@@ -168,9 +168,9 @@ const products = [
     material: 'PC + ABS',
     inStock: true,
     colors: [
-      { name: 'Rose Gold', hex: '#B87333', image: 'https://images.unsplash.com/photo-1581553680321-4fffae59febd?auto=format&fit=crop&w=800&q=80' },
-      { name: 'Forest Green', hex: '#1C3F34', image: 'https://images.unsplash.com/photo-1581553680321-4fffae59febd?auto=format&fit=crop&w=800&q=80' },
-      { name: 'Midnight Black', hex: '#1C1C1E', image: 'https://images.unsplash.com/photo-1565026057447-b8899f2905a7?auto=format&fit=crop&w=800&q=80' }
+      { name: 'Rose Gold', hex: '#B87333', image: '/images/luggage-green.png' },
+      { name: 'Forest Green', hex: '#1C3F34', image: '/images/luggage-green.png' },
+      { name: 'Midnight Black', hex: '#1C1C1E', image: '/images/luggage-black.png' }
     ],
     sizes: ['3-Piece Full Bundle (20" + 24" + 28")'],
     description: 'The ultimate set for families and long expeditions. Includes Cabin, Medium, and Large suitcases that nest inside each other for easy storage.',
@@ -180,7 +180,7 @@ const products = [
       'Matching Color Accessories Bag Included',
       'Integrated TSA Lock on All 3 Suitcases'
     ],
-    image: 'https://images.unsplash.com/photo-1581553680321-4fffae59febd?auto=format&fit=crop&w=800&q=80'
+    image: '/images/luggage-green.png'
   }
 ];
 
@@ -192,8 +192,8 @@ let initialOrders = [
     total: 18498,
     paymentMethod: 'eSewa',
     items: [
-      { name: 'Gurkauna Pro', size: '24" (Medium)', color: 'Forest Green', quantity: 1, price: 9999, image: 'https://images.unsplash.com/photo-1581553680321-4fffae59febd?auto=format&fit=crop&w=800&q=80' },
-      { name: 'Gurkauna Classic', size: '20" (Cabin)', color: 'Midnight Black', quantity: 1, price: 7999, image: 'https://images.unsplash.com/photo-1565026057447-b8899f2905a7?auto=format&fit=crop&w=800&q=80' }
+      { name: 'Gurkauna Pro', size: '24" (Medium)', color: 'Forest Green', quantity: 1, price: 9999, image: '/images/luggage-green.png' },
+      { name: 'Gurkauna Classic', size: '20" (Cabin)', color: 'Midnight Black', quantity: 1, price: 7999, image: '/images/luggage-black.png' }
     ]
   },
   {
@@ -203,7 +203,7 @@ let initialOrders = [
     total: 9999,
     paymentMethod: 'Khalti',
     items: [
-      { name: 'Gurkauna Pro', size: '20" (Cabin)', color: 'Forest Green', quantity: 1, price: 9999, image: 'https://images.unsplash.com/photo-1581553680321-4fffae59febd?auto=format&fit=crop&w=800&q=80' }
+      { name: 'Gurkauna Pro', size: '20" (Cabin)', color: 'Forest Green', quantity: 1, price: 9999, image: '/images/luggage-green.png' }
     ]
   },
   {
@@ -213,7 +213,7 @@ let initialOrders = [
     total: 12999,
     paymentMethod: 'Cash on Delivery',
     items: [
-      { name: 'Gurkauna Elite', size: '28" (Large)', color: 'Navy Blue', quantity: 1, price: 12999, image: 'https://images.unsplash.com/photo-1565026057447-b8899f2905a7?auto=format&fit=crop&w=800&q=80' }
+      { name: 'Gurkauna Elite', size: '28" (Large)', color: 'Navy Blue', quantity: 1, price: 12999, image: '/images/luggage-blue.png' }
     ]
   }
 ];

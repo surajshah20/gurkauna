@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ArrowRight, ShieldCheck, RefreshCcw } from 'lucide-react';
+import { PLACEHOLDER_IMAGES } from '../config/images';
 
 export default function CollectionsPage({ setActivePage }) {
   const [activeFilter, setActiveFilter] = useState('All Collections');
@@ -12,7 +13,7 @@ export default function CollectionsPage({ setActivePage }) {
       name: 'Classic Collection',
       eyebrow: 'TIMELESS. RELIABLE. ALWAYS WITH YOU.',
       description: 'The perfect balance of style, durability and functionality. Our Classic collection is designed for everyday journeys and weekend getaways.',
-      image: 'https://images.unsplash.com/photo-1565026057447-b8899f2905a7?auto=format&fit=crop&w=800&q=80',
+      image: PLACEHOLDER_IMAGES.collectionClassic,
       linkText: 'Shop Collection'
     },
     {
@@ -20,7 +21,7 @@ export default function CollectionsPage({ setActivePage }) {
       name: 'Pro Collection',
       eyebrow: 'BUILT FOR FREQUENT TRAVELLERS.',
       description: 'Lightweight, durable and designed for those who are always on the move. The Pro collection offers extra space and enhanced features for longer trips.',
-      image: 'https://images.unsplash.com/photo-1581553680321-4fffae59febd?auto=format&fit=crop&w=800&q=80',
+      image: PLACEHOLDER_IMAGES.collectionPro,
       linkText: 'Shop Collection'
     },
     {
@@ -28,7 +29,7 @@ export default function CollectionsPage({ setActivePage }) {
       name: 'Elite Collection',
       eyebrow: 'PREMIUM STYLE. SUPERIOR PERFORMANCE.',
       description: 'For those who want more. The Elite collection combines premium materials, advanced features and a refined look for a better travel experience.',
-      image: 'https://images.unsplash.com/photo-1575037614876-c38db0e304b0?auto=format&fit=crop&w=800&q=80', // Replace with suitable blue image if possible, but this works
+      image: PLACEHOLDER_IMAGES.collectionElite,
       linkText: 'Shop Collection'
     },
     {
@@ -36,7 +37,7 @@ export default function CollectionsPage({ setActivePage }) {
       name: 'Premium Collection',
       eyebrow: 'ELEVATED DESIGN. LASTING QUALITY.',
       description: 'Crafted with high-grade materials and modern designs, the Premium collection is made for those who expect more from their luggage.',
-      image: 'https://images.unsplash.com/photo-1512438248247-f0f2a5a8b7f0?auto=format&fit=crop&w=800&q=80', // Black suitcase
+      image: PLACEHOLDER_IMAGES.collectionPro, // Use pro or classic
       linkText: 'Shop Collection'
     },
     {
@@ -44,7 +45,7 @@ export default function CollectionsPage({ setActivePage }) {
       name: 'Travel Sets',
       eyebrow: 'COMPLETE SETS. GREATER VALUE.',
       description: 'Everything you need for your next adventure. Our travel sets include matching luggage pieces designed for convenience, style and peace of mind.',
-      image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80', // Group of suitcases
+      image: PLACEHOLDER_IMAGES.collectionSets,
       linkText: 'Shop Collection'
     },
     {
@@ -52,7 +53,7 @@ export default function CollectionsPage({ setActivePage }) {
       name: 'Special Collection',
       eyebrow: 'SOMETHING EXTRAORDINARY AWAITS.',
       description: 'Stay tuned for our exclusive collection, with limited editions and unique designs crafted for true explorers.',
-      image: 'https://images.unsplash.com/photo-1581553680321-4fffae59febd?auto=format&fit=crop&w=800&q=80', // same but blurred
+      image: PLACEHOLDER_IMAGES.collectionElite,
       linkText: 'Learn More',
       comingSoon: true
     }
@@ -67,10 +68,10 @@ export default function CollectionsPage({ setActivePage }) {
           <div style={{ maxWidth: '500px', padding: '60px 0' }}>
             <span style={{ fontSize: '0.75rem', fontWeight: '700', letterSpacing: '0.1em', color: '#71717A', textTransform: 'uppercase', marginBottom: '16px', display: 'block' }}>Our Collections</span>
             <h1 style={{ fontFamily: 'var(--font-heading)', fontSize: '3.5rem', fontWeight: '400', color: 'var(--color-dark)', lineHeight: '1.1', marginBottom: '16px' }}>More than luggage.<br/>A journey of your own.</h1>
-            <p style={{ fontSize: '1.05rem', color: 'var(--color-gray-600)', lineHeight: '1.6' }}>Explore our thoughtfully designed collections, crafted for every kind of journey — from everyday trips to once-in-a-lifetime adventures.</p>
+            <p style={{ fontSize: '1.05rem', color: 'var(--color-gray-600)', lineHeight: '1.6' }}>Explore our thoughtfully designed collections, crafted for every kind of journey, from everyday trips to once-in-a-lifetime adventures.</p>
           </div>
           <div style={{ display: 'none', '@media (minWidth: 768px)': { display: 'block' }, height: '100%', alignSelf: 'flex-end', marginRight: '-60px' }}>
-             <img src="https://images.unsplash.com/photo-1581553680321-4fffae59febd?auto=format&fit=crop&w=600&q=80" alt="Luggage Collection" style={{ height: '400px', objectFit: 'contain', marginBottom: '-40px' }} />
+             <img src={PLACEHOLDER_IMAGES.productBlack} alt="Luggage Collection" style={{ height: '400px', objectFit: 'contain', marginBottom: '-40px' }} />
           </div>
         </div>
       </div>

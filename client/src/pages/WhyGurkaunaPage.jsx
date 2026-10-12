@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight, ShieldCheck, Gem, Plane, Mountain, Users, Leaf, Shield } from 'lucide-react';
+import { PLACEHOLDER_IMAGES } from '../config/images';
 
 export default function WhyGurkaunaPage({ setActivePage }) {
   
@@ -17,7 +18,7 @@ export default function WhyGurkaunaPage({ setActivePage }) {
     {
       icon: <Plane size={24} />,
       title: 'Travel Ready',
-      desc: 'Lightweight, spacious and well-organized — designed for modern travelers and every kind of journey.'
+      desc: 'Lightweight, spacious and well-organized, designed for modern travelers and every kind of journey.'
     },
     {
       icon: <Shield size={24} />,
@@ -33,7 +34,7 @@ export default function WhyGurkaunaPage({ setActivePage }) {
       <section style={{ position: 'relative', minHeight: '500px', display: 'flex', alignItems: 'center', backgroundColor: '#E5E5E5' }}>
         <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 0, overflow: 'hidden' }}>
            <img 
-              src="https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?auto=format&fit=crop&w=1600&q=80" 
+              src={PLACEHOLDER_IMAGES.brandStory} 
               alt="Suitcase with Mountains" 
               style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }} 
            />
@@ -43,7 +44,7 @@ export default function WhyGurkaunaPage({ setActivePage }) {
            <div style={{ maxWidth: '500px', padding: '60px 0' }}>
               <span style={{ fontSize: '0.75rem', fontWeight: '700', letterSpacing: '0.1em', color: '#71717A', textTransform: 'uppercase', marginBottom: '16px', display: 'block' }}>Why Gurkauna</span>
               <h1 style={{ fontFamily: 'var(--font-heading)', fontSize: '3.5rem', fontWeight: '400', color: 'var(--color-dark)', lineHeight: '1.1', marginBottom: '16px' }}>Thoughtful details.<br/>Built for real journeys.</h1>
-              <p style={{ fontSize: '1.05rem', color: '#52525B', lineHeight: '1.6' }}>At Gurkauna, we don't just make luggage — we build travel companions designed for people who go further. Here's what makes us different.</p>
+              <p style={{ fontSize: '1.05rem', color: '#52525B', lineHeight: '1.6' }}>At Gurkauna, we don't just make luggage: we build travel companions designed for people who go further. Here's what makes us different.</p>
            </div>
         </div>
       </section>
@@ -104,7 +105,7 @@ export default function WhyGurkaunaPage({ setActivePage }) {
          <div className="why-quality-grid" style={{ display: 'grid', gap: '60px', alignItems: 'center' }}>
             <div>
                <img 
-                  src="https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?auto=format&fit=crop&w=800&q=80" 
+                  src={PLACEHOLDER_IMAGES.editorialDifference} 
                   alt="Suitcase details" 
                   style={{ width: '100%', borderRadius: 'var(--radius-lg)', objectFit: 'cover', height: '400px' }} 
                />
@@ -130,7 +131,7 @@ export default function WhyGurkaunaPage({ setActivePage }) {
             <div style={{ paddingRight: '40px' }}>
                <span style={{ fontSize: '0.75rem', fontWeight: '700', letterSpacing: '0.1em', color: '#71717A', textTransform: 'uppercase', marginBottom: '16px', display: 'block' }}>Inspired By Nepal</span>
                <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: '2.5rem', fontWeight: '400', color: 'var(--color-dark)', lineHeight: '1.2', marginBottom: '24px' }}>Proudly rooted<br/>in Nepal.</h2>
-               <p style={{ fontSize: '1rem', color: '#52525B', lineHeight: '1.6', marginBottom: '32px' }}>We're a Nepali brand, inspired by our mountains, our people and our endless sense of adventure. Gurkauna is more than luggage — it's a reflection of where we come from and where we're going.</p>
+               <p style={{ fontSize: '1rem', color: '#52525B', lineHeight: '1.6', marginBottom: '32px' }}>We're a Nepali brand, inspired by our mountains, our people and our endless sense of adventure. Gurkauna is more than luggage, it's a reflection of where we come from and where we're going.</p>
                <button 
                   onClick={() => setActivePage('about')} 
                   style={{ color: '#E11D48', fontWeight: '700', fontSize: '0.9rem', background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px', padding: 0 }}
@@ -140,7 +141,7 @@ export default function WhyGurkaunaPage({ setActivePage }) {
             </div>
             <div>
                <img 
-                  src="https://images.unsplash.com/photo-1542314831-c6a4d1421c48?auto=format&fit=crop&w=1000&q=80" 
+                  src={PLACEHOLDER_IMAGES.aboutHero} 
                   alt="Rooted in Nepal" 
                   style={{ width: '100%', borderRadius: 'var(--radius-lg)', objectFit: 'cover', height: '360px' }} 
                />
@@ -187,7 +188,7 @@ export default function WhyGurkaunaPage({ setActivePage }) {
       <section style={{ position: 'relative', minHeight: '300px', display: 'flex', alignItems: 'center', backgroundColor: '#111827', textAlign: 'center' }}>
         <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 0, overflow: 'hidden' }}>
            <img 
-              src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1600&q=80" 
+              src={PLACEHOLDER_IMAGES.heroSecondary} 
               alt="Mountain Night" 
               style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.4 }} 
            />

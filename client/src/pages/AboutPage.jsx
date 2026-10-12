@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight, ShieldCheck, Gem, Plane, Heart, Lock, Settings, CircleDashed } from 'lucide-react';
+import { PLACEHOLDER_IMAGES } from '../config/images';
 
 export default function AboutPage({ setActivePage }) {
   
@@ -56,7 +57,7 @@ export default function AboutPage({ setActivePage }) {
       <section style={{ position: 'relative', minHeight: '500px', display: 'flex', alignItems: 'center', backgroundColor: '#E5E5E5' }}>
         <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 0, overflow: 'hidden' }}>
            <img 
-              src="https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=1600&q=80" 
+              src={PLACEHOLDER_IMAGES.aboutHero} 
               alt="Mountain View" 
               style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }} 
            />
@@ -65,7 +66,7 @@ export default function AboutPage({ setActivePage }) {
         <div style={{ position: 'relative', zIndex: 1, maxWidth: '1280px', margin: '0 auto', width: '100%', padding: '0 24px' }}>
            <div style={{ maxWidth: '500px', padding: '60px 0' }}>
               <span style={{ fontSize: '0.75rem', fontWeight: '700', letterSpacing: '0.1em', color: '#71717A', textTransform: 'uppercase', marginBottom: '16px', display: 'block' }}>Our Story</span>
-              <h1 style={{ fontFamily: 'var(--font-heading)', fontSize: '3.5rem', fontWeight: '400', color: 'var(--color-dark)', lineHeight: '1.1', marginBottom: '16px' }}>Born from a simple<br/>belief — travel better.</h1>
+              <h1 style={{ fontFamily: 'var(--font-heading)', fontSize: '3.5rem', fontWeight: '400', color: 'var(--color-dark)', lineHeight: '1.1', marginBottom: '16px' }}>Born from a simple<br/>belief, travel better.</h1>
               <p style={{ fontSize: '1.05rem', color: '#52525B', lineHeight: '1.6' }}>Gurkauna started with a dream to create luggage that's not just functional, but meaningful. A brand built for explorers, dreamers and everyday travelers who believe that every journey matters.</p>
            </div>
         </div>
@@ -111,7 +112,7 @@ export default function AboutPage({ setActivePage }) {
          <div className="about-beginning-grid" style={{ display: 'grid', gap: '60px', alignItems: 'center' }}>
             <div>
                <img 
-                  src="https://images.unsplash.com/photo-1542868735-c343b67be361?auto=format&fit=crop&w=800&q=80" 
+                  src={PLACEHOLDER_IMAGES.editorialDifference} 
                   alt="Sketchbook with suitcase" 
                   style={{ width: '100%', borderRadius: 'var(--radius-lg)', objectFit: 'cover', height: '400px' }} 
                />
@@ -119,7 +120,7 @@ export default function AboutPage({ setActivePage }) {
             <div style={{ paddingRight: '40px' }}>
                <span style={{ fontSize: '0.75rem', fontWeight: '700', letterSpacing: '0.1em', color: '#71717A', textTransform: 'uppercase', marginBottom: '16px', display: 'block' }}>Our Beginning</span>
                <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: '2.5rem', fontWeight: '400', color: 'var(--color-dark)', lineHeight: '1.2', marginBottom: '24px' }}>A passion turned<br/>into a brand.</h2>
-               <p style={{ fontSize: '1rem', color: '#52525B', lineHeight: '1.6', marginBottom: '16px' }}>It all started with a simple idea — to bring high-quality, durable and stylish luggage to Nepal. We noticed that most travel bags available were either too expensive, low quality, or didn't match the needs of modern travelers.</p>
+               <p style={{ fontSize: '1rem', color: '#52525B', lineHeight: '1.6', marginBottom: '16px' }}>It all started with a simple idea, to bring high-quality, durable and stylish luggage to Nepal. We noticed that most travel bags available were either too expensive, low quality, or didn't match the needs of modern travelers.</p>
                <p style={{ fontSize: '1rem', color: '#52525B', lineHeight: '1.6' }}>So, we set out to change that. Gurkauna was born from a vision to offer premium luggage with thoughtful design, reliable quality and a touch of Nepal in every piece.</p>
             </div>
          </div>
@@ -160,7 +161,7 @@ export default function AboutPage({ setActivePage }) {
          <div className="about-craft-grid" style={{ display: 'grid', gap: '60px', alignItems: 'center' }}>
             <div>
                <img 
-                  src="https://images.unsplash.com/photo-1574345389650-6ce8bd05e60b?auto=format&fit=crop&w=800&q=80" 
+                  src={PLACEHOLDER_IMAGES.productBlack} 
                   alt="Our Craft - Fixing lock" 
                   style={{ width: '100%', borderRadius: 'var(--radius-lg)', objectFit: 'cover', height: '400px' }} 
                />
@@ -169,7 +170,7 @@ export default function AboutPage({ setActivePage }) {
                <div>
                  <span style={{ fontSize: '0.75rem', fontWeight: '700', letterSpacing: '0.1em', color: '#71717A', textTransform: 'uppercase', marginBottom: '16px', display: 'block' }}>Our Craft</span>
                  <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: '2.5rem', fontWeight: '400', color: 'var(--color-dark)', lineHeight: '1.2', marginBottom: '24px' }}>Built with care.<br/>Made to last.</h2>
-                 <p style={{ fontSize: '1rem', color: '#52525B', lineHeight: '1.6' }}>Every Gurkauna product goes through a careful process — from material selection to final checks. We use premium ABS and polycarbonate materials, strong zippers, smooth wheels and tested handles to ensure durability, security and a premium feel.</p>
+                 <p style={{ fontSize: '1rem', color: '#52525B', lineHeight: '1.6' }}>Every Gurkauna product goes through a careful process, from material selection to final checks. We use premium ABS and polycarbonate materials, strong zippers, smooth wheels and tested handles to ensure durability, security and a premium feel.</p>
                </div>
                
                <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
@@ -195,7 +196,7 @@ export default function AboutPage({ setActivePage }) {
             <div style={{ paddingRight: '40px' }}>
                <span style={{ fontSize: '0.75rem', fontWeight: '700', letterSpacing: '0.1em', color: '#71717A', textTransform: 'uppercase', marginBottom: '16px', display: 'block' }}>Inspired By Nepal</span>
                <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: '2.5rem', fontWeight: '400', color: 'var(--color-dark)', lineHeight: '1.2', marginBottom: '24px' }}>Rooted in Nepal.<br/>Made for the world.</h2>
-               <p style={{ fontSize: '1rem', color: '#52525B', lineHeight: '1.6', marginBottom: '32px' }}>Nepal is more than just where we're from — it's our inspiration. The mountains, the people, the culture, and the spirit of adventure shape everything we do. Gurkauna is our way of sharing a piece of Nepal with the world.</p>
+               <p style={{ fontSize: '1rem', color: '#52525B', lineHeight: '1.6', marginBottom: '32px' }}>Nepal is more than just where we're from, it's our inspiration. The mountains, the people, the culture, and the spirit of adventure shape everything we do. Gurkauna is our way of sharing a piece of Nepal with the world.</p>
                <button 
                   onClick={() => setActivePage('about')} 
                   style={{ color: '#E11D48', fontWeight: '700', fontSize: '0.9rem', background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px', padding: 0 }}
@@ -205,7 +206,7 @@ export default function AboutPage({ setActivePage }) {
             </div>
             <div>
                <img 
-                  src="https://images.unsplash.com/photo-1541410965313-d53b3c16ef17?auto=format&fit=crop&w=1000&q=80" 
+                  src={PLACEHOLDER_IMAGES.brandStory} 
                   alt="Inspired by Nepal" 
                   style={{ width: '100%', borderRadius: 'var(--radius-lg)', objectFit: 'cover', height: '360px' }} 
                />
@@ -217,7 +218,7 @@ export default function AboutPage({ setActivePage }) {
       <section style={{ position: 'relative', minHeight: '300px', display: 'flex', alignItems: 'center', backgroundColor: '#111827', textAlign: 'center' }}>
         <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 0, overflow: 'hidden' }}>
            <img 
-              src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1600&q=80" 
+              src={PLACEHOLDER_IMAGES.heroSecondary} 
               alt="Mountain Night" 
               style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.4 }} 
            />

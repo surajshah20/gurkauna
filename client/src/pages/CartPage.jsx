@@ -1,6 +1,7 @@
 import React from 'react';
 import { Trash2, ArrowRight, ArrowLeft, ShieldCheck, ShoppingBag, X, CheckCircle, Truck, RefreshCcw, Leaf, Lock } from 'lucide-react';
 import ProductCard from '../components/ProductCard';
+import { PLACEHOLDER_IMAGES } from '../config/images';
 
 export default function CartPage({ 
   cartItems, 
@@ -28,6 +29,34 @@ export default function CartPage({
 
   return (
     <div style={{ backgroundColor: '#FAFAFA', minHeight: '100vh', paddingBottom: '80px' }}>
+      <style dangerouslySetInnerHTML={{__html: `
+        .cart-layout {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 40px;
+          align-items: start;
+        }
+        .benefits-grid {
+          display: grid;
+          grid-template-columns: repeat(1, 1fr);
+          gap: 24px;
+          text-align: center;
+        }
+        .products-grid {
+          display: grid;
+          grid-template-columns: repeat(1, 1fr);
+          gap: 24px;
+        }
+        @media (min-width: 600px) {
+          .benefits-grid { grid-template-columns: repeat(2, 1fr); }
+          .products-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (min-width: 1024px) {
+          .cart-layout { grid-template-columns: 1fr 400px; }
+          .benefits-grid { grid-template-columns: repeat(4, 1fr); }
+          .products-grid { grid-template-columns: repeat(4, 1fr); }
+        }
+      `}} />
       
       {/* Hero Banner */}
       <div style={{ backgroundColor: '#F4F4F5', borderBottom: '1px solid #E4E4E7', overflow: 'hidden' }}>
@@ -38,7 +67,7 @@ export default function CartPage({
             <p style={{ fontSize: '1.05rem', color: 'var(--color-gray-600)' }}>Your selected items are ready for your next adventure.</p>
           </div>
           <div style={{ display: 'none', '@media (min-width: 768px)': { display: 'block' }, height: '100%', alignSelf: 'flex-end', marginRight: '-100px' }}>
-             <img src="https://images.unsplash.com/photo-1581553680321-4fffae59febd?auto=format&fit=crop&w=600&q=80" alt="Luggage" style={{ height: '350px', objectFit: 'contain', marginBottom: '-50px', maskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)' }} />
+             <img src={PLACEHOLDER_IMAGES.productGreen} alt="Luggage" style={{ height: '350px', objectFit: 'contain', marginBottom: '-50px', maskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)' }} />
           </div>
         </div>
       </div>
@@ -57,7 +86,7 @@ export default function CartPage({
             </button>
           </div>
         ) : (
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 400px', gap: '40px', alignItems: 'start' }}>
+          <div className="cart-layout">
             
             {/* Left: Cart Items */}
             <div>
@@ -212,7 +241,7 @@ export default function CartPage({
         )}
 
         {/* Benefits Strip */}
-        <div style={{ marginTop: '60px', background: 'white', borderRadius: 'var(--radius-md)', border: '1px solid #E4E4E7', padding: '40px', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '24px', textAlign: 'center' }}>
+        <div className="benefits-grid" style={{ marginTop: '60px', background: 'white', borderRadius: 'var(--radius-md)', border: '1px solid #E4E4E7', padding: '40px' }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <ShieldCheck size={32} style={{ color: 'var(--color-dark)', marginBottom: '16px' }} />
             <div style={{ fontSize: '0.95rem', fontWeight: '700', color: 'var(--color-dark)', marginBottom: '4px' }}>Durable Materials</div>

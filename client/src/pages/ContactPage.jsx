@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, LayoutGrid, Clock, Send, Globe, Share2, Hash, MessageCircle, ShieldCheck, ArrowRight } from 'lucide-react';
+import { PLACEHOLDER_IMAGES } from '../config/images';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -28,7 +29,7 @@ export default function ContactPage() {
       <section style={{ position: 'relative', minHeight: '400px', display: 'flex', alignItems: 'center', backgroundColor: '#E5E5E5' }}>
         <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 0, overflow: 'hidden' }}>
            <img 
-              src="https://images.unsplash.com/photo-1542314831-c6a4d1421c48?auto=format&fit=crop&w=1600&q=80" 
+              src={PLACEHOLDER_IMAGES.aboutHero} 
               alt="Suitcase on Mountain" 
               style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }} 
            />
@@ -38,7 +39,7 @@ export default function ContactPage() {
            <div style={{ maxWidth: '500px', padding: '60px 0' }}>
               <span style={{ fontSize: '0.75rem', fontWeight: '700', letterSpacing: '0.1em', color: '#71717A', textTransform: 'uppercase', marginBottom: '16px', display: 'block' }}>Get In Touch</span>
               <h1 style={{ fontFamily: 'var(--font-heading)', fontSize: '3.5rem', fontWeight: '400', color: 'var(--color-dark)', lineHeight: '1.1', marginBottom: '16px' }}>We'd love to<br/>hear from you.</h1>
-              <p style={{ fontSize: '1.05rem', color: '#52525B', lineHeight: '1.6' }}>Have a question, need support, or just want to say hello? Our team is here to help. Reach out to us — we usually respond within 24 hours.</p>
+              <p style={{ fontSize: '1.05rem', color: '#52525B', lineHeight: '1.6' }}>Have a question, need support, or just want to say hello? Our team is here to help. Reach out to us, we usually respond within 24 hours.</p>
            </div>
         </div>
       </section>
@@ -197,7 +198,7 @@ export default function ContactPage() {
             {/* Left Map Image */}
             <div style={{ borderRadius: 'var(--radius-lg)', overflow: 'hidden', border: '1px solid #E4E4E7', position: 'relative' }}>
                <img 
-                 src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=1200&q=80" 
+                 src={PLACEHOLDER_IMAGES.heroSecondary} 
                  alt="Map Location"
                  style={{ width: '100%', height: '100%', objectFit: 'cover', minHeight: '400px' }} 
                />

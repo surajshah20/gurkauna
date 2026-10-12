@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import CartDrawer from './components/CartDrawer';
+import { PLACEHOLDER_IMAGES } from './config/images';
 
 import HomePage from './pages/HomePage';
 import ShopPage from './pages/ShopPage';
@@ -13,6 +14,18 @@ import ContactPage from './pages/ContactPage';
 import AccountPage from './pages/AccountPage';
 import CollectionsPage from './pages/CollectionsPage';
 import WhyGurkaunaPage from './pages/WhyGurkaunaPage';
+import AuthPage from './pages/AuthPage';
+import OrdersPage from './pages/OrdersPage';
+import OrderTrackingPage from './pages/OrderTrackingPage';
+import WishlistPage from './pages/WishlistPage';
+import FAQPage from './pages/FAQPage';
+import ShippingReturnsPage from './pages/ShippingReturnsPage';
+import WarrantyPage from './pages/WarrantyPage';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import TermsPage from './pages/TermsPage';
+import SearchPage from './pages/SearchPage';
+import NotFoundPage from './pages/NotFoundPage';
+import PaymentFailedPage from './pages/PaymentFailedPage';
 
 import './App.css';
 
@@ -31,7 +44,7 @@ export default function App() {
       size: '24" (Medium)',
       color: 'Forest Green',
       quantity: 1,
-      image: 'https://images.unsplash.com/photo-1581553680321-4fffae59febd?auto=format&fit=crop&w=800&q=80'
+      image: PLACEHOLDER_IMAGES.productGreen
     },
     {
       id: 'gurkauna-classic',
@@ -41,7 +54,7 @@ export default function App() {
       size: '20" (Cabin)',
       color: 'Midnight Black',
       quantity: 1,
-      image: 'https://images.unsplash.com/photo-1565026057447-b8899f2905a7?auto=format&fit=crop&w=800&q=80'
+      image: PLACEHOLDER_IMAGES.productBlack
     }
   ]);
 
@@ -224,11 +237,40 @@ export default function App() {
 
         {activePage === 'account' && (
           <AccountPage
-            wishlist={wishlist}
-            onSelectProduct={handleSelectProduct}
             setActivePage={setActivePage}
           />
         )}
+
+        {activePage === 'login' && <AuthPage setActivePage={setActivePage} />}
+        {activePage === 'signup' && <AuthPage setActivePage={setActivePage} />}
+        {activePage === 'orders' && <OrdersPage setActivePage={setActivePage} />}
+        {activePage === 'order-tracking' && <OrderTrackingPage setActivePage={setActivePage} />}
+        {activePage === 'wishlist' && (
+          <WishlistPage
+            wishlist={wishlist}
+            onSelectProduct={handleSelectProduct}
+            onAddToCart={handleAddToCart}
+            onToggleWishlist={handleToggleWishlist}
+            setActivePage={setActivePage}
+          />
+        )}
+        {activePage === 'faq' && <FAQPage setActivePage={setActivePage} />}
+        {activePage === 'shipping-returns' && <ShippingReturnsPage setActivePage={setActivePage} />}
+        {activePage === 'warranty' && <WarrantyPage setActivePage={setActivePage} />}
+        {activePage === 'privacy' && <PrivacyPolicyPage setActivePage={setActivePage} />}
+        {activePage === 'terms' && <TermsPage setActivePage={setActivePage} />}
+        {activePage === 'search' && (
+          <SearchPage
+            allProducts={products}
+            onSelectProduct={handleSelectProduct}
+            onAddToCart={handleAddToCart}
+            wishlist={wishlist}
+            onToggleWishlist={handleToggleWishlist}
+            setActivePage={setActivePage}
+          />
+        )}
+        {activePage === 'payment-failed' && <PaymentFailedPage setActivePage={setActivePage} />}
+        {activePage === '404' && <NotFoundPage setActivePage={setActivePage} />}
       </div>
 
       {/* Footer */}
@@ -248,6 +290,10 @@ export default function App() {
         onGoToCheckout={() => {
           setIsCartOpen(false);
           setActivePage('checkout');
+        }}
+        onGoToShop={(category) => {
+          setIsCartOpen(false);
+          setActivePage('shop');
         }}
       />
     </div>

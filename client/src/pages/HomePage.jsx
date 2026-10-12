@@ -2,6 +2,7 @@ import React from 'react';
 import { ArrowRight, ShieldCheck, RefreshCw, Lock, Feather, CheckCircle2 } from 'lucide-react';
 import ProductCard from '../components/ProductCard';
 import GurkaunaLogo from '../components/GurkaunaLogo';
+import { PLACEHOLDER_IMAGES } from '../config/images';
 
 export default function HomePage({ products = [], onSelectProduct, onAddToCart, wishlist = [], onToggleWishlist, setActivePage }) {
   // Select top 4 best sellers or default fallback array
@@ -15,11 +16,11 @@ export default function HomePage({ products = [], onSelectProduct, onAddToCart, 
       originalPrice: 11999,
       badge: 'Bestseller',
       colors: [
-        { name: 'Forest Green', hex: '#1C3F34', image: 'https://images.unsplash.com/photo-1581553680321-4fffae59febd?auto=format&fit=crop&w=800&q=80' },
-        { name: 'Midnight Black', hex: '#1C1C1E', image: 'https://images.unsplash.com/photo-1565026057447-b8899f2905a7?auto=format&fit=crop&w=800&q=80' }
+        { name: 'Forest Green', hex: '#1C3F34', image: PLACEHOLDER_IMAGES.productGreen },
+        { name: 'Midnight Black', hex: '#1C1C1E', image: PLACEHOLDER_IMAGES.productBlack }
       ],
       sizes: ['24" (Medium)'],
-      image: 'https://images.unsplash.com/photo-1581553680321-4fffae59febd?auto=format&fit=crop&w=800&q=80'
+      image: PLACEHOLDER_IMAGES.productGreen
     },
     {
       id: 'gurkauna-classic',
@@ -30,11 +31,11 @@ export default function HomePage({ products = [], onSelectProduct, onAddToCart, 
       originalPrice: 9500,
       badge: 'Popular',
       colors: [
-        { name: 'Midnight Black', hex: '#1C1C1E', image: 'https://images.unsplash.com/photo-1565026057447-b8899f2905a7?auto=format&fit=crop&w=800&q=80' },
-        { name: 'Navy Blue', hex: '#1B2A4A', image: 'https://images.unsplash.com/photo-1565026057447-b8899f2905a7?auto=format&fit=crop&w=800&q=80' }
+        { name: 'Midnight Black', hex: '#1C1C1E', image: PLACEHOLDER_IMAGES.productBlack },
+        { name: 'Navy Blue', hex: '#1B2A4A', image: PLACEHOLDER_IMAGES.productBlack }
       ],
       sizes: ['20" (Cabin)'],
-      image: 'https://images.unsplash.com/photo-1565026057447-b8899f2905a7?auto=format&fit=crop&w=800&q=80'
+      image: PLACEHOLDER_IMAGES.productBlack
     },
     {
       id: 'gurkauna-elite',
@@ -45,11 +46,11 @@ export default function HomePage({ products = [], onSelectProduct, onAddToCart, 
       originalPrice: 14999,
       badge: 'Premium',
       colors: [
-        { name: 'Titanium Silver', hex: '#A8A9AD', image: 'https://images.unsplash.com/photo-1565026057447-b8899f2905a7?auto=format&fit=crop&w=800&q=80' },
-        { name: 'Forest Green', hex: '#1C3F34', image: 'https://images.unsplash.com/photo-1581553680321-4fffae59febd?auto=format&fit=crop&w=800&q=80' }
+        { name: 'Titanium Silver', hex: '#A8A9AD', image: PLACEHOLDER_IMAGES.productSilver },
+        { name: 'Forest Green', hex: '#1C3F34', image: PLACEHOLDER_IMAGES.productGreen }
       ],
       sizes: ['28" (Large)'],
-      image: 'https://images.unsplash.com/photo-1565026057447-b8899f2905a7?auto=format&fit=crop&w=800&q=80'
+      image: PLACEHOLDER_IMAGES.productSilver
     },
     {
       id: 'gurkauna-travel-set',
@@ -60,11 +61,11 @@ export default function HomePage({ products = [], onSelectProduct, onAddToCart, 
       originalPrice: 29999,
       badge: 'Value Set',
       colors: [
-        { name: 'Rose Gold', hex: '#B87333', image: 'https://images.unsplash.com/photo-1581553680321-4fffae59febd?auto=format&fit=crop&w=800&q=80' },
-        { name: 'Forest Green', hex: '#1C3F34', image: 'https://images.unsplash.com/photo-1581553680321-4fffae59febd?auto=format&fit=crop&w=800&q=80' }
+        { name: 'Rose Gold', hex: '#B87333', image: PLACEHOLDER_IMAGES.productGreen },
+        { name: 'Forest Green', hex: '#1C3F34', image: PLACEHOLDER_IMAGES.productGreen }
       ],
       sizes: ['Set of 3'],
-      image: 'https://images.unsplash.com/photo-1581553680321-4fffae59febd?auto=format&fit=crop&w=800&q=80'
+      image: PLACEHOLDER_IMAGES.productGreen
     }
   ];
 
@@ -72,22 +73,22 @@ export default function HomePage({ products = [], onSelectProduct, onAddToCart, 
     {
       title: 'Gurkauna Classic',
       desc: 'Everyday travel.',
-      image: 'https://images.unsplash.com/photo-1565026057447-b8899f2905a7?auto=format&fit=crop&w=800&q=80'
+      image: PLACEHOLDER_IMAGES.collectionClassic
     },
     {
       title: 'Gurkauna Pro',
       desc: 'Built for frequent travellers.',
-      image: 'https://images.unsplash.com/photo-1581553680321-4fffae59febd?auto=format&fit=crop&w=800&q=80'
+      image: PLACEHOLDER_IMAGES.collectionPro
     },
     {
       title: 'Gurkauna Elite',
       desc: 'Premium materials. Refined design.',
-      image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=800&q=80'
+      image: PLACEHOLDER_IMAGES.collectionElite
     },
     {
       title: 'Travel Sets',
       desc: 'Complete travel solutions.',
-      image: 'https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=800&q=80'
+      image: PLACEHOLDER_IMAGES.collectionSets
     }
   ];
 
@@ -111,6 +112,23 @@ export default function HomePage({ products = [], onSelectProduct, onAddToCart, 
 
   return (
     <div className="landing-page">
+      <style dangerouslySetInnerHTML={{__html: `
+        .products-grid {
+          display: grid;
+          grid-template-columns: repeat(1, 1fr);
+          gap: 24px;
+        }
+        @media (min-width: 600px) {
+          .products-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+        }
+        @media (min-width: 1024px) {
+          .products-grid {
+            grid-template-columns: repeat(4, 1fr) !important;
+          }
+        }
+      `}} />
       {/* ---------------------------------------------------- */}
       {/* 2. HERO SECTION */}
       {/* ---------------------------------------------------- */}
@@ -120,7 +138,7 @@ export default function HomePage({ products = [], onSelectProduct, onAddToCart, 
             <span className="hero-eyebrow">NEPALESE HERITAGE • GLOBAL STANDARD</span>
             <h1 className="hero-headline">Pack Your World.</h1>
             <p className="hero-subtext">
-              Gurkauna creates reliable, stylish luggage for every journey — engineered with impact-resistant shells, smooth spinner wheels, and timeless aesthetics.
+              Gurkauna creates reliable, stylish luggage for every journey. Engineered with impact-resistant shells, smooth spinner wheels, and timeless aesthetics.
             </p>
             <div className="hero-cta-group">
               <button 
@@ -141,7 +159,7 @@ export default function HomePage({ products = [], onSelectProduct, onAddToCart, 
           <div className="hero-media">
             <div className="hero-img-frame">
               <img 
-                src="https://images.unsplash.com/photo-1581553680321-4fffae59febd?auto=format&fit=crop&w=1200&q=80" 
+                src={PLACEHOLDER_IMAGES.heroMain} 
                 alt="Gurkauna Premium Suitcase" 
                 className="hero-img"
               />
@@ -237,7 +255,7 @@ export default function HomePage({ products = [], onSelectProduct, onAddToCart, 
         <div className="editorial-container">
           <div className="editorial-media">
             <img 
-              src="https://images.unsplash.com/photo-1565026057447-b8899f2905a7?auto=format&fit=crop&w=1000&q=80" 
+              src={PLACEHOLDER_IMAGES.productBlack} 
               alt="The Gurkauna Difference" 
               className="editorial-img"
             />
@@ -247,32 +265,32 @@ export default function HomePage({ products = [], onSelectProduct, onAddToCart, 
             <span className="editorial-eyebrow">THE GURKAUNA DIFFERENCE</span>
             <h2 className="editorial-title">Built for wherever you go.</h2>
             <p className="editorial-paragraph">
-              Every piece of Gurkauna luggage is crafted with meticulous attention to detail — combining impact-absorbing materials, silent gliding wheels, and ergonomic hardware to withstand the rigors of modern travel.
+              Every piece of Gurkauna luggage is crafted with meticulous attention to detail, combining impact-absorbing materials, silent gliding wheels, and ergonomic hardware to withstand the rigors of modern travel.
             </p>
 
             <div className="editorial-features-list">
               <div className="editorial-feature-item">
                 <CheckCircle2 size={18} className="feature-check-icon" />
                 <div>
-                  <strong>Premium Materials</strong> — High-grade PC & ABS shells that flex under pressure and resist heavy impact.
+                  <strong>Premium Materials:</strong> High-grade PC & ABS shells that flex under pressure and resist heavy impact.
                 </div>
               </div>
               <div className="editorial-feature-item">
                 <CheckCircle2 size={18} className="feature-check-icon" />
                 <div>
-                  <strong>Smooth Spinner Wheels</strong> — Japanese Hinomoto 360° dual wheels for silent, effortless motion.
+                  <strong>Smooth Spinner Wheels:</strong> Japanese Hinomoto 360° dual wheels for silent, effortless motion.
                 </div>
               </div>
               <div className="editorial-feature-item">
                 <CheckCircle2 size={18} className="feature-check-icon" />
                 <div>
-                  <strong>Secure TSA Lock</strong> — Flush-mounted combination lock approved for global airport security.
+                  <strong>Secure TSA Lock:</strong> Flush-mounted combination lock approved for global airport security.
                 </div>
               </div>
               <div className="editorial-feature-item">
                 <CheckCircle2 size={18} className="feature-check-icon" />
                 <div>
-                  <strong>Thoughtful Interior</strong> — Dual zipper mesh compartments and compression straps for smart packing.
+                  <strong>Thoughtful Interior:</strong> Dual zipper mesh compartments and compression straps for smart packing.
                 </div>
               </div>
             </div>
@@ -290,7 +308,7 @@ export default function HomePage({ products = [], onSelectProduct, onAddToCart, 
       {/* ---------------------------------------------------- */}
       {/* 6. TRAVEL / BRAND STORY SECTION */}
       {/* ---------------------------------------------------- */}
-      <section className="immersive-story-section">
+      <section className="immersive-story-section" style={{ backgroundImage: `url(${PLACEHOLDER_IMAGES.brandStory})` }}>
         <div className="immersive-overlay" />
         <div className="immersive-content">
           <h2 className="immersive-title">From City Streets to Mountain Roads.</h2>
@@ -338,7 +356,7 @@ export default function HomePage({ products = [], onSelectProduct, onAddToCart, 
             "Made for the journeys worth remembering."
           </blockquote>
           <p className="statement-subtext">
-            Gurkauna embodies the spirit of exploration — creating quiet luxury luggage built for a lifetime of movement across Nepal and beyond.
+            Gurkauna embodies the spirit of exploration. Creating quiet luxury luggage built for a lifetime of movement across Nepal and beyond.
           </p>
         </div>
       </section>
