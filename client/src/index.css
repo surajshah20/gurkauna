@@ -5,13 +5,18 @@
   --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-accent: 'Outfit', sans-serif;
 
-  /* Gurkauna Brand Palette */
-  --color-brand: #F71C00;
-  --color-brand-hover: #D61800;
-  --color-brand-light: #FFF1F0;
-  --color-brand-accent: #E50914;
+  /* Gurkauna Luxury Brand Palette */
+  --color-brand: #0F172A;
+  --color-brand-accent: #991B1B;
+  --color-brand-hover: #1E293B;
+  --color-brand-light: #F8FAFC;
+  --color-garnet: #991B1B;
+  --color-garnet-hover: #7F1D1D;
+  --color-alpine-green: #1C3F34;
+  --color-deep-navy: #1B2A4A;
+  --color-champagne: #D4AF37;
   
-  --color-dark: #111111;
+  --color-dark: #09090B;
   --color-dark-surface: #18181B;
   --color-gray-900: #18181B;
   --color-gray-800: #27272A;

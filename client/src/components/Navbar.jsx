@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ShoppingBag, Search, User, Heart, Menu, X } from 'lucide-react';
+import { ShoppingBag, Search, User, Menu, X, ArrowRight } from 'lucide-react';
 import GurkaunaLogo from './GurkaunaLogo';
 
 export default function Navbar({ activePage, setActivePage, cartCount, wishlistCount = 0, onOpenCart }) {
@@ -15,20 +15,21 @@ export default function Navbar({ activePage, setActivePage, cartCount, wishlistC
       {/* Top Announcement Bar */}
       <div className="announcement-bar">
         <div className="announcement-content">
-          <span>Complimentary Shipping Across Nepal on Orders Over NPR 20,000</span>
+          <span className="announcement-pill">Free Express Delivery</span>
+          <span>Complimentary shipping across Nepal on orders over NPR 20,000</span>
           <span className="announcement-divider">•</span>
-          <span className="announcement-highlight">Crafted for Global Expeditions</span>
+          <span className="announcement-highlight">10-Year Global Warranty</span>
         </div>
       </div>
 
       {/* Main Sticky Navbar */}
       <nav className="navbar">
         <div className="navbar-container">
-          {/* Left: Primary Red Logo */}
+          {/* Left: Luxury Wordmark & Emblem */}
           <div className="navbar-brand">
             <GurkaunaLogo 
-              variant="red" 
-              height={42} 
+              variant="dark" 
+              height={38} 
               onClick={() => handleNavClick('home')} 
             />
           </div>
@@ -48,7 +49,7 @@ export default function Navbar({ activePage, setActivePage, cartCount, wishlistC
                 className={`nav-link ${activePage === 'shop' ? 'active' : ''}`}
                 onClick={() => handleNavClick('shop')}
               >
-                Shop
+                Suitcases
               </button>
             </li>
             <li>
@@ -61,6 +62,14 @@ export default function Navbar({ activePage, setActivePage, cartCount, wishlistC
             </li>
             <li>
               <button
+                className={`nav-link ${activePage === 'why-gurkauna' ? 'active' : ''}`}
+                onClick={() => handleNavClick('why-gurkauna')}
+              >
+                Technology
+              </button>
+            </li>
+            <li>
+              <button
                 className={`nav-link ${activePage === 'about' ? 'active' : ''}`}
                 onClick={() => handleNavClick('about')}
               >
@@ -69,18 +78,10 @@ export default function Navbar({ activePage, setActivePage, cartCount, wishlistC
             </li>
             <li>
               <button
-                className={`nav-link ${activePage === 'why-gurkauna' ? 'active' : ''}`}
-                onClick={() => handleNavClick('why-gurkauna')}
-              >
-                Why Gurkauna
-              </button>
-            </li>
-            <li>
-              <button
                 className={`nav-link ${activePage === 'contact' ? 'active' : ''}`}
                 onClick={() => handleNavClick('contact')}
               >
-                Contact
+                Concierge
               </button>
             </li>
           </ul>
@@ -89,29 +90,29 @@ export default function Navbar({ activePage, setActivePage, cartCount, wishlistC
           <div className="nav-actions">
             <button
               className="icon-btn"
-              title="Search"
-              aria-label="Search"
-              onClick={() => handleNavClick('shop')}
+              title="Search Luggage"
+              aria-label="Search Luggage"
+              onClick={() => handleNavClick('search')}
             >
-              <Search size={20} strokeWidth={1.75} />
+              <Search size={19} strokeWidth={1.8} />
             </button>
             
             <button
               className="icon-btn"
-              title="Account"
-              aria-label="Account"
+              title="My Account"
+              aria-label="My Account"
               onClick={() => handleNavClick('account')}
             >
-              <User size={20} strokeWidth={1.75} />
+              <User size={19} strokeWidth={1.8} />
             </button>
 
             <button
               className="icon-btn cart-btn"
-              title="Shopping Cart"
-              aria-label="Shopping Cart"
+              title="Shopping Bag"
+              aria-label="Shopping Bag"
               onClick={onOpenCart}
             >
-              <ShoppingBag size={20} strokeWidth={1.75} />
+              <ShoppingBag size={19} strokeWidth={1.8} />
               {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
             </button>
 
@@ -121,62 +122,98 @@ export default function Navbar({ activePage, setActivePage, cartCount, wishlistC
               aria-label="Toggle Navigation Menu"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
-              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
           </div>
         </div>
 
         {/* Mobile Dropdown Drawer */}
-        <div style={{
-           position: 'fixed',
-           top: 0,
-           left: 0,
-           bottom: 0,
-           width: '100%',
-           height: '100vh',
-           background: 'rgba(0,0,0,0.5)',
-           zIndex: 2000,
-           opacity: mobileMenuOpen ? 1 : 0,
-           pointerEvents: mobileMenuOpen ? 'auto' : 'none',
-           transition: 'opacity 0.3s ease-in-out'
-        }} onClick={() => setMobileMenuOpen(false)}>
-          <div style={{
-             position: 'absolute',
-             top: 0,
-             left: 0,
-             bottom: 0,
-             width: '85%',
-             maxWidth: '320px',
-             background: 'white',
-             transform: mobileMenuOpen ? 'translateX(0)' : 'translateX(-100%)',
-             transition: 'transform 0.3s ease-in-out',
-             display: 'flex',
-             flexDirection: 'column',
-             boxShadow: 'var(--shadow-lg)'
-          }} onClick={e => e.stopPropagation()}>
-             <div style={{ padding: '24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #E4E4E7' }}>
-               <GurkaunaLogo variant="red" height={36} onClick={() => handleNavClick('home')} />
-               <button onClick={() => setMobileMenuOpen(false)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#71717A' }}>
-                 <X size={24} />
-               </button>
-             </div>
-             
-             <div style={{ flex: 1, overflowY: 'auto', padding: '24px' }}>
-                <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '24px' }}>
-                  <li><button onClick={() => handleNavClick('home')} style={{ fontSize: '1.2rem', fontWeight: activePage === 'home' ? '700' : '500', color: activePage === 'home' ? '#E11D48' : 'var(--color-dark)', background: 'none', border: 'none', cursor: 'pointer' }}>Home</button></li>
-                  <li><button onClick={() => handleNavClick('shop')} style={{ fontSize: '1.2rem', fontWeight: activePage === 'shop' ? '700' : '500', color: activePage === 'shop' ? '#E11D48' : 'var(--color-dark)', background: 'none', border: 'none', cursor: 'pointer' }}>Shop</button></li>
-                  <li><button onClick={() => handleNavClick('collections')} style={{ fontSize: '1.2rem', fontWeight: activePage === 'collections' ? '700' : '500', color: activePage === 'collections' ? '#E11D48' : 'var(--color-dark)', background: 'none', border: 'none', cursor: 'pointer' }}>Collections</button></li>
-                  <li><button onClick={() => handleNavClick('about')} style={{ fontSize: '1.2rem', fontWeight: activePage === 'about' ? '700' : '500', color: activePage === 'about' ? '#E11D48' : 'var(--color-dark)', background: 'none', border: 'none', cursor: 'pointer' }}>Our Story</button></li>
-                  <li><button onClick={() => handleNavClick('why-gurkauna')} style={{ fontSize: '1.2rem', fontWeight: activePage === 'why-gurkauna' ? '700' : '500', color: activePage === 'why-gurkauna' ? '#E11D48' : 'var(--color-dark)', background: 'none', border: 'none', cursor: 'pointer' }}>Why Gurkauna</button></li>
-                  <li><button onClick={() => handleNavClick('contact')} style={{ fontSize: '1.2rem', fontWeight: activePage === 'contact' ? '700' : '500', color: activePage === 'contact' ? '#E11D48' : 'var(--color-dark)', background: 'none', border: 'none', cursor: 'pointer' }}>Contact</button></li>
-                </ul>
-             </div>
-             
-             <div style={{ padding: '24px', borderTop: '1px solid #E4E4E7', background: '#FAFAFA' }}>
-                <button onClick={() => handleNavClick('account')} style={{ width: '100%', padding: '16px', background: 'white', border: '1px solid #E4E4E7', borderRadius: 'var(--radius-md)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', fontSize: '1rem', fontWeight: '600', color: 'var(--color-dark)', cursor: 'pointer', marginBottom: '12px' }}>
-                   <User size={20} /> My Account
-                </button>
-             </div>
+        <div 
+          className="mobile-backdrop"
+          style={{
+            position: 'fixed',
+            inset: 0,
+            background: 'rgba(15, 23, 42, 0.5)',
+            backdropFilter: 'blur(8px)',
+            zIndex: 2000,
+            opacity: mobileMenuOpen ? 1 : 0,
+            pointerEvents: mobileMenuOpen ? 'auto' : 'none',
+            transition: 'opacity 0.25s ease'
+          }} 
+          onClick={() => setMobileMenuOpen(false)}
+        >
+          <div 
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              bottom: 0,
+              width: '85%',
+              maxWidth: '340px',
+              background: '#FFFFFF',
+              transform: mobileMenuOpen ? 'translateX(0)' : 'translateX(-100%)',
+              transition: 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
+              display: 'flex',
+              flexDirection: 'column',
+              boxShadow: '8px 0 32px rgba(0,0,0,0.12)'
+            }} 
+            onClick={e => e.stopPropagation()}
+          >
+            <div style={{ padding: '24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #F1F5F9' }}>
+              <GurkaunaLogo variant="dark" height={34} onClick={() => handleNavClick('home')} />
+              <button 
+                onClick={() => setMobileMenuOpen(false)} 
+                style={{ background: '#F8FAFC', border: '1px solid #E2E8F0', borderRadius: '50%', width: '34px', height: '34px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', color: '#64748B' }}
+              >
+                <X size={18} />
+              </button>
+            </div>
+            
+            <div style={{ flex: 1, overflowY: 'auto', padding: '24px' }}>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                {[
+                  { id: 'home', label: 'Home' },
+                  { id: 'shop', label: 'Suitcases & Luggage' },
+                  { id: 'collections', label: 'Collections' },
+                  { id: 'why-gurkauna', label: 'Technology & Craft' },
+                  { id: 'about', label: 'Our Story' },
+                  { id: 'contact', label: 'Customer Concierge' }
+                ].map((item) => (
+                  <li key={item.id}>
+                    <button 
+                      onClick={() => handleNavClick(item.id)} 
+                      style={{ 
+                        width: '100%',
+                        textAlign: 'left',
+                        padding: '12px 16px',
+                        borderRadius: '8px',
+                        fontSize: '1.05rem', 
+                        fontWeight: activePage === item.id ? '700' : '500', 
+                        color: activePage === item.id ? '#0F172A' : '#64748B', 
+                        background: activePage === item.id ? '#F1F5F9' : 'transparent', 
+                        border: 'none', 
+                        cursor: 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between'
+                      }}
+                    >
+                      {item.label}
+                      <ArrowRight size={16} style={{ opacity: activePage === item.id ? 1 : 0.3 }} />
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            
+            <div style={{ padding: '24px', borderTop: '1px solid #F1F5F9', background: '#F8FAFC' }}>
+              <button 
+                onClick={() => handleNavClick('account')} 
+                style={{ width: '100%', padding: '14px', background: '#0F172A', color: 'white', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', fontSize: '0.95rem', fontWeight: '600', border: 'none', cursor: 'pointer' }}
+              >
+                <User size={18} /> My Account
+              </button>
+            </div>
           </div>
         </div>
 

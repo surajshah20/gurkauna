@@ -6,14 +6,14 @@
    1. Announcement Bar & Sticky Navbar
    -------------------------------------------------------------------------- */
 .announcement-bar {
-  background-color: #111111;
-  color: #D4D4D8;
-  font-size: 0.8rem;
+  background-color: #09090B;
+  color: #E2E8F0;
+  font-size: 0.78rem;
   font-weight: 500;
-  padding: 8px 24px;
+  padding: 10px 24px;
   text-align: center;
-  border-bottom: 1px solid #27272A;
-  letter-spacing: 0.02em;
+  border-bottom: 1px solid #1E293B;
+  letter-spacing: 0.03em;
 }
 .announcement-content {
   display: flex;
@@ -23,8 +23,20 @@
   max-width: 1280px;
   margin: 0 auto;
 }
+.announcement-pill {
+  display: inline-block;
+  background: rgba(16, 185, 129, 0.15);
+  color: #34D399;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 999px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
 .announcement-divider {
-  color: #52525B;
+  color: #475569;
 }
 .announcement-highlight {
   color: #FFFFFF;
@@ -35,17 +47,17 @@
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(255, 255, 255, 0.96);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid #E4E4E7;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid #E2E8F0;
   transition: all 0.25s ease;
 }
 
 .navbar-container {
-  max-width: 1320px;
+  max-width: 1360px;
   margin: 0 auto;
-  padding: 16px 24px;
+  padding: 14px 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -59,41 +71,38 @@
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 36px;
+  gap: 10px;
   list-style: none;
 }
 
 .nav-link {
   font-family: var(--font-body);
-  font-size: 0.92rem;
+  font-size: 0.88rem;
   font-weight: 500;
-  color: #3F3F46;
-  transition: color 0.2s ease;
+  letter-spacing: 0.02em;
+  color: #52525B;
+  transition: all 0.2s ease;
   position: relative;
-  padding: 4px 0;
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: transparent;
 }
 
-.nav-link:hover, 
+.nav-link:hover {
+  color: #09090B;
+  background: #F4F4F5;
+}
+
 .nav-link.active {
-  color: var(--color-brand);
-  font-weight: 600;
-}
-
-.nav-link.active::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background-color: var(--color-brand);
-  border-radius: 2px;
+  color: #09090B;
+  font-weight: 700;
+  background: #F1F5F9;
 }
 
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
 }
 
 .icon-btn {
@@ -103,15 +112,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #27272A;
+  color: #334155;
   transition: all 0.2s ease;
   position: relative;
   background: transparent;
 }
 
 .icon-btn:hover {
-  background: #F4F4F5;
-  color: var(--color-brand);
+  background: #F1F5F9;
+  color: #09090B;
 }
 
 .cart-btn {
@@ -120,14 +129,14 @@
 
 .cart-badge {
   position: absolute;
-  top: 2px;
-  right: 2px;
-  background-color: var(--color-brand);
+  top: 3px;
+  right: 3px;
+  background-color: #09090B;
   color: #FFFFFF;
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 700;
-  width: 18px;
-  height: 18px;
+  width: 17px;
+  height: 17px;
   border-radius: 50%;
   display: flex;
   align-items: center;
