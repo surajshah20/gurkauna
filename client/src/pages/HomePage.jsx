@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { 
   ArrowRight, 
   ShieldCheck, 
@@ -11,6 +11,7 @@ import {
   Truck
 } from 'lucide-react';
 import ProductCard from '../components/ProductCard';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 import './HomePage.css';
 
 export default function HomePage({ 
@@ -23,9 +24,29 @@ export default function HomePage({
 }) {
   // Interactive Hero Finish Switcher
   const [activeHeroColor, setActiveHeroColor] = useState('green');
+  const [imgChanging, setImgChanging] = useState(false);
   
   // Interactive Technology Anatomy Tab
   const [techTab, setTechTab] = useState('shell');
+
+  // Scroll reveal refs — one per major section
+  const proofRef      = useScrollReveal();
+  const techRef       = useScrollReveal();
+  const collectRef    = useScrollReveal();
+  const bestsellRef   = useScrollReveal();
+  const editorialRef  = useScrollReveal();
+  const reviewsRef    = useScrollReveal();
+  const vipRef        = useScrollReveal();
+
+  // Hero color switch with crossfade
+  const handleColorChange = useCallback((color) => {
+    if (color === activeHeroColor) return;
+    setImgChanging(true);
+    setTimeout(() => {
+      setActiveHeroColor(color);
+      setImgChanging(false);
+    }, 200);
+  }, [activeHeroColor]);
 
   const heroVariants = {
     green: {
@@ -213,7 +234,7 @@ export default function HomePage({
                 <button
                   type="button"
                   className={`finish-swatch-btn ${activeHeroColor === 'green' ? 'active' : ''}`}
-                  onClick={() => setActiveHeroColor('green')}
+                  onClick={() => handleColorChange('green')}
                   title="Alpine Forest Green"
                 >
                   <span className="swatch-indicator" style={{ backgroundColor: '#1C3F34' }} />
@@ -223,7 +244,7 @@ export default function HomePage({
                 <button
                   type="button"
                   className={`finish-swatch-btn ${activeHeroColor === 'black' ? 'active' : ''}`}
-                  onClick={() => setActiveHeroColor('black')}
+                  onClick={() => handleColorChange('black')}
                   title="Midnight Obsidian"
                 >
                   <span className="swatch-indicator" style={{ backgroundColor: '#18181B' }} />
@@ -233,7 +254,7 @@ export default function HomePage({
                 <button
                   type="button"
                   className={`finish-swatch-btn ${activeHeroColor === 'blue' ? 'active' : ''}`}
-                  onClick={() => setActiveHeroColor('blue')}
+                  onClick={() => handleColorChange('blue')}
                   title="Himalayan Deep Navy"
                 >
                   <span className="swatch-indicator" style={{ backgroundColor: '#1B2A4A' }} />
@@ -296,10 +317,10 @@ export default function HomePage({
 
             {/* Suitcase Stage Visual */}
             <div className="hero-suitcases-stage">
-              <img 
+                <img 
                 src={currentHero.image} 
                 alt={`Gurkauna Suitcase in ${currentHero.name}`}
-                className="hero-main-luggage-img"
+                className={`hero-main-luggage-img${imgChanging ? ' img-changing' : ''}`}
                 loading="eager"
               />
               <div className="hero-pedestal-shadow" />
@@ -397,9 +418,9 @@ export default function HomePage({
       {/* ------------------------------------------------------------------ */}
       {/* 3. INTERACTIVE SUITCASE ANATOMY & TECHNOLOGY */}
       {/* ------------------------------------------------------------------ */}
-      <section id="technology-section" className="tech-anatomy-section">
+      <section id="technology-section" className="tech-anatomy-section" ref={techRef}>
         <div className="tech-container">
-          <div className="section-eyebrow-center">
+          <div className="section-eyebrow-center reveal">
             <span className="section-pill-tag">INDUSTRIAL ARCHITECTURE</span>
             <h2 className="section-headline-dark">Engineering The Standard.</h2>
             <p className="section-subtext-dark">
@@ -409,7 +430,7 @@ export default function HomePage({
           </div>
 
           {/* Interactive Technology Tabs */}
-          <div className="tech-tabs-nav">
+          <div className="tech-tabs-nav reveal reveal-delay-1">
             {[
               { id: 'shell', label: '01. Polycarbonate Shell' },
               { id: 'wheels', label: '02. Hinomoto 360° Wheels' },
@@ -428,7 +449,7 @@ export default function HomePage({
           </div>
 
           {/* Active Tab Content Card */}
-          <div className="tech-card-display">
+          <div className="tech-card-display reveal reveal-delay-2">
             <div className="tech-card-content">
               <span className="tech-subtitle">{techSpecs[techTab].subtitle}</span>
               <h3 className="tech-title">{techSpecs[techTab].title}</h3>
@@ -465,9 +486,9 @@ export default function HomePage({
       {/* ------------------------------------------------------------------ */}
       {/* 4. CURATED COLLECTIONS (THE SIGNATURE LINES) */}
       {/* ------------------------------------------------------------------ */}
-      <section className="collections-curated-section">
+      <section className="collections-curated-section" ref={collectRef}>
         <div className="collections-container">
-          <div className="section-eyebrow-split">
+          <div className="section-eyebrow-split reveal">
             <div>
               <span className="section-pill-tag">THE GURKAUNA FLEET</span>
               <h2 className="section-headline-dark">Crafted for Every Horizon.</h2>
@@ -483,7 +504,7 @@ export default function HomePage({
 
           <div className="collections-quad-grid">
             {/* 1. Classic Series */}
-            <div className="collection-card-elevated" onClick={() => setActivePage('shop')}>
+            <div className="collection-card-elevated reveal reveal-delay-1" onClick={() => setActivePage('shop')}>
               <div className="card-media-wrap">
                 <span className="collection-type-tag">Everyday Explorer</span>
                 <img src="/images/luggage-black.png" alt="Gurkauna Classic" />
@@ -502,7 +523,7 @@ export default function HomePage({
             </div>
 
             {/* 2. Pro Series */}
-            <div className="collection-card-elevated featured-card" onClick={() => setActivePage('shop')}>
+            <div className="collection-card-elevated featured-card reveal reveal-delay-2" onClick={() => setActivePage('shop')}>
               <div className="card-badge-top">Most Popular</div>
               <div className="card-media-wrap">
                 <span className="collection-type-tag">Frequent Flyer</span>
@@ -522,7 +543,7 @@ export default function HomePage({
             </div>
 
             {/* 3. Elite Series */}
-            <div className="collection-card-elevated" onClick={() => setActivePage('shop')}>
+            <div className="collection-card-elevated reveal reveal-delay-3" onClick={() => setActivePage('shop')}>
               <div className="card-media-wrap">
                 <span className="collection-type-tag">Flagship Luxury</span>
                 <img src="/images/luggage-blue.png" alt="Gurkauna Elite" />
@@ -541,7 +562,7 @@ export default function HomePage({
             </div>
 
             {/* 4. Full Travel Sets */}
-            <div className="collection-card-elevated" onClick={() => setActivePage('shop')}>
+            <div className="collection-card-elevated reveal reveal-delay-4" onClick={() => setActivePage('shop')}>
               <div className="card-media-wrap">
                 <span className="collection-type-tag">Expedition Bundle</span>
                 <img src="/images/luggage-green.png" alt="Gurkauna Travel Sets" />
@@ -565,9 +586,9 @@ export default function HomePage({
       {/* ------------------------------------------------------------------ */}
       {/* 5. TRAVELERS' BESTSELLERS */}
       {/* ------------------------------------------------------------------ */}
-      <section className="bestsellers-luxury-section">
+      <section className="bestsellers-luxury-section" ref={bestsellRef}>
         <div className="bestsellers-luxury-container">
-          <div className="section-eyebrow-split">
+          <div className="section-eyebrow-split reveal">
             <div>
               <span className="section-pill-tag">EXPLORER FAVORITES</span>
               <h2 className="section-headline-dark">Top Rated Suitcases.</h2>
@@ -600,9 +621,9 @@ export default function HomePage({
       {/* ------------------------------------------------------------------ */}
       {/* 6. HIMALAYAN PROOF / EDITORIAL STORY */}
       {/* ------------------------------------------------------------------ */}
-      <section className="editorial-statement-section">
+      <section className="editorial-statement-section" ref={editorialRef}>
         <div className="editorial-statement-container">
-          <div className="editorial-quote-block">
+          <div className="editorial-quote-block reveal">
             <span className="editorial-tagline">THE GURKAUNA PHILOSOPHY</span>
             <blockquote className="editorial-main-quote">
               "Most international luggage is designed for flat European concourses. Gurkauna is engineered to thrive on both five-star marble lobbies and rugged mountain transit."
@@ -614,17 +635,17 @@ export default function HomePage({
 
           {/* Test Metric Cards */}
           <div className="durability-test-metrics">
-            <div className="metric-box">
+            <div className="metric-box reveal reveal-delay-1">
               <span className="metric-title">50 KM</span>
               <span className="metric-subtitle">Cobblestone Wheel Test</span>
               <p className="metric-text">Hinomoto wheels rolled continuously over rough cobblestone with zero bearing wear.</p>
             </div>
-            <div className="metric-box">
+            <div className="metric-box reveal reveal-delay-2">
               <span className="metric-title">-25°C</span>
               <span className="metric-subtitle">Sub-Zero Thermal Test</span>
               <p className="metric-text">Polycarbonate shell survives extreme altitude freezing without material embrittlement.</p>
             </div>
-            <div className="metric-box">
+            <div className="metric-box reveal reveal-delay-3">
               <span className="metric-title">2 METERS</span>
               <span className="metric-subtitle">Drop Corner Integrity</span>
               <p className="metric-text">Full baggage drops onto concrete corners with zero structural breakage or latch failure.</p>
@@ -636,9 +657,9 @@ export default function HomePage({
       {/* ------------------------------------------------------------------ */}
       {/* 7. VERIFIED REVIEWS */}
       {/* ------------------------------------------------------------------ */}
-      <section className="reviews-luxury-section">
+      <section className="reviews-luxury-section" ref={reviewsRef}>
         <div className="reviews-luxury-container">
-          <div className="section-eyebrow-center">
+          <div className="section-eyebrow-center reveal">
             <span className="section-pill-tag">VERIFIED EXPEDITIONS</span>
             <h2 className="section-headline-dark">Stories from the Road.</h2>
             <div className="star-rating-summary">
@@ -655,29 +676,32 @@ export default function HomePage({
                 name: 'Aavash Shrestha',
                 origin: 'Kathmandu, Nepal',
                 trip: 'Trip to Annapurna & Bangkok',
-                text: 'The wheel glide is astonishing. You barely need to push it; it almost moves on its own. Held up without a scratch through three domestic flights.'
+                text: 'The wheel glide is astonishing. You barely need to push it; it almost moves on its own. Held up without a scratch through three domestic flights.',
+                avatarClass: 'author-avatar-1'
               },
               {
                 name: 'Dr. Pratima Rai',
                 origin: 'Lalitpur, Nepal',
                 trip: 'Conference in Zurich',
-                text: 'Finally, a luxury Nepali brand that genuinely stands shoulder-to-shoulder with Rimowa and Tumi. The matte finish and aluminium handle feel exceptionally high-end.'
+                text: 'Finally, a luxury Nepali brand that genuinely stands shoulder-to-shoulder with Rimowa and Tumi. The matte finish and aluminium handle feel exceptionally high-end.',
+                avatarClass: 'author-avatar-2'
               },
               {
                 name: 'Samir Thapa',
                 origin: 'Pokhara, Nepal',
                 trip: 'Flight to Dubai & London',
-                text: 'The TSA lock clicked cleanly and the interior compression dividers saved me from checking a second bag. Gurkauna is my definitive travel companion.'
+                text: 'The TSA lock clicked cleanly and the interior compression dividers saved me from checking a second bag. Gurkauna is my definitive travel companion.',
+                avatarClass: 'author-avatar-3'
               }
             ].map((rev, idx) => (
-              <div key={idx} className="luxury-review-card">
+              <div key={idx} className={`luxury-review-card reveal reveal-delay-${idx + 1}`}>
                 <div className="card-stars-row">
                   {[...Array(5)].map((_, i) => <Star key={i} size={15} fill="#F59E0B" color="#F59E0B" />)}
                   <span className="verified-badge"><Check size={12} /> Verified Traveler</span>
                 </div>
                 <p className="review-quote-text">"{rev.text}"</p>
                 <div className="review-author-meta">
-                  <div className="author-avatar">{rev.name.charAt(0)}</div>
+                  <div className={`author-avatar ${rev.avatarClass}`}>{rev.name.charAt(0)}</div>
                   <div>
                     <h5 className="author-name">{rev.name}</h5>
                     <span className="author-trip">{rev.origin} • {rev.trip}</span>
@@ -692,9 +716,9 @@ export default function HomePage({
       {/* ------------------------------------------------------------------ */}
       {/* 8. VIP EXPEDITION NEWSLETTER & PROMISE */}
       {/* ------------------------------------------------------------------ */}
-      <section className="vip-promise-section">
+      <section className="vip-promise-section" ref={vipRef}>
         <div className="vip-promise-container">
-          <div className="vip-content-box">
+          <div className="vip-content-box reveal">
             <span className="vip-tag">GURKAUNA EXPEDITION SOCIETY</span>
             <h2 className="vip-title">Pack Your World with Confidence.</h2>
             <p className="vip-desc">

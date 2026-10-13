@@ -158,6 +158,7 @@ export default function App() {
 
       {/* Main Page Routing */}
       <div style={{ flexGrow: 1 }}>
+        <div key={activePage} className="page-transition">
         {activePage === 'home' && (
           <HomePage
             products={products}
@@ -271,6 +272,7 @@ export default function App() {
         )}
         {activePage === 'payment-failed' && <PaymentFailedPage setActivePage={setActivePage} />}
         {activePage === '404' && <NotFoundPage setActivePage={setActivePage} />}
+        </div>
       </div>
 
       {/* Footer */}
