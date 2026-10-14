@@ -1505,7 +1505,7 @@
 .shop-products-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 32px 24px;
+  gap: 28px;
 }
 
 /* PRODUCT CARD (SHOP) */
@@ -1514,15 +1514,17 @@
   display: flex;
   flex-direction: column;
   background: #FFFFFF;
-  border-radius: var(--radius-md);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  border-radius: 16px;
+  border: 1px solid #EBEBEB;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.04);
   transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
               box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
   overflow: hidden;
 }
 .shop-product-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 16px 40px rgba(0,0,0,0.11);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.09), 0 24px 48px rgba(0,0,0,0.08);
+  border-color: #D4D4D8;
 }
 
 /* All badges — unified dark pill (Apple-style) */
@@ -1591,11 +1593,10 @@
   position: relative;
   width: 100%;
   aspect-ratio: 4/5;
-  border-radius: var(--radius-md);
   overflow: hidden;
-  background: #F4F4F5;
+  background: #F7F7F7;
   cursor: pointer;
-  margin-bottom: 20px;
+  border-radius: 16px 16px 0 0;
 }
 
 .shop-card-img {
@@ -1605,33 +1606,35 @@
   transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 .shop-product-card:hover .shop-card-img {
-  transform: scale(1.05);
+  transform: scale(1.04);
 }
 
 .shop-card-body {
   display: flex;
   flex-direction: column;
   flex: 1;
-  padding: 0 4px;
+  padding: 16px 18px 18px;
 }
 
 .shop-card-title {
   font-family: var(--font-heading);
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   font-weight: 600;
   color: var(--color-text-dark);
-  margin-bottom: 4px;
+  margin-bottom: 3px;
   cursor: pointer;
   transition: color 0.2s ease;
+  line-height: 1.3;
 }
 .shop-card-title:hover {
   color: var(--color-brand);
 }
 
 .shop-card-material {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: var(--color-text-light);
-  margin-bottom: 12px;
+  margin-bottom: 14px;
+  letter-spacing: 0.01em;
 }
 
 .shop-card-size-pills {
@@ -1684,17 +1687,16 @@
 }
 
 .shop-card-footer {
-  margin-top: auto;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-top: 1px solid #F4F4F5;
+  flex-direction: column;
+  gap: 12px;
+  border-top: 1px solid #F0F0F0;
   padding-top: 14px;
-  margin-top: 12px;
+  margin-top: auto;
 }
 
 .shop-card-price {
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   font-weight: 700;
   color: var(--color-text-dark);
   letter-spacing: -0.02em;
@@ -1703,25 +1705,27 @@
 .shop-card-add-btn {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  font-size: 0.78rem;
+  justify-content: center;
+  gap: 7px;
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
   font-weight: 700;
-  color: #09090B;
+  color: #FFFFFF;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  padding: 8px 14px;
-  border-radius: 999px;
-  border: 1.5px solid rgba(0,0,0,0.15);
-  background: transparent;
+  letter-spacing: 0.08em;
+  padding: 11px 16px;
+  border-radius: 10px;
+  border: none;
+  background: #09090B;
   transition: all 0.22s cubic-bezier(0.22, 1, 0.36, 1);
   white-space: nowrap;
+  cursor: pointer;
 }
 .shop-card-add-btn:hover {
-  background: #09090B;
-  color: #FFFFFF;
-  border-color: #09090B;
+  background: #27272A;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.18);
 }
 
 /* PAGINATION */

@@ -230,23 +230,7 @@ export default function ShopPage({ products = [], onSelectProduct, onAddToCart, 
 
   return (
     <div className="shop-page-wrapper">
-      <style dangerouslySetInnerHTML={{__html: `
-        .shop-products-grid {
-          display: grid;
-          grid-template-columns: repeat(1, 1fr);
-          gap: 24px;
-        }
-        @media (min-width: 600px) {
-          .shop-products-grid {
-            grid-template-columns: repeat(2, 1fr) !important;
-          }
-        }
-        @media (min-width: 1024px) {
-          .shop-products-grid {
-            grid-template-columns: repeat(3, 1fr) !important;
-          }
-        }
-      `}} />
+
       {/* ---------------------------------------------------- */}
       {/* 1. PREMIUM SHOP HERO HEADER */}
       {/* ---------------------------------------------------- */}
