@@ -731,142 +731,168 @@
 }
 
 .collection-card-elevated {
-  background: #FAFAFA;
+  background: #FFFFFF;
   border: 1px solid #E2E8F0;
-  border-radius: 14px;
+  border-radius: 16px;
   overflow: hidden;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.35s ease;
   display: flex;
   flex-direction: column;
   position: relative;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
 }
 
 .collection-card-elevated:hover {
   transform: translateY(-6px);
-  border-color: transparent;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.10);
+  border-color: #CBD5E1;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.10);
 }
 
 .collection-card-elevated.featured-card {
-  border-color: #CBD5E1;
+  border-color: #94A3B8;
 }
 
 .card-badge-top {
   position: absolute;
   top: 14px;
-  left: 14px;
+  right: 14px;
   background: #09090B;
   color: #FFFFFF;
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
-  padding: 4px 10px;
+  letter-spacing: 0.06em;
+  padding: 5px 12px;
   border-radius: 999px;
-  z-index: 2;
+  z-index: 10;
   text-transform: uppercase;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+  pointer-events: none;
+}
+
+.card-badge-top.badge-luxury {
+  background: #1B2A4A;
+}
+
+.card-badge-top.badge-value {
+  background: #1C3F34;
 }
 
 .card-media-wrap {
-  height: 270px;
-  background: linear-gradient(160deg, #F1F5F9 0%, #E8EDF5 100%);
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: #F4F4F5;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px 24px 36px 24px;
+  padding: 0;
   position: relative;
   overflow: hidden;
 }
 
-/* The type tag lives OUTSIDE the media wrap overflow — sits at the bottom of card-media-wrap but won't be clipped */
-.collection-type-tag {
-  position: absolute;
-  bottom: 10px;
-  left: 14px;
-  font-size: 0.68rem;
-  font-weight: 700;
-  color: #475569;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  background: rgba(255,255,255,0.82);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  padding: 3px 8px;
-  border-radius: 4px;
-  white-space: nowrap;
-  z-index: 5;
-}
-
 .card-media-wrap img {
-  max-height: 100%;
-  max-width: 100%;
-  object-fit: contain;
-  transition: transform 0.4s ease;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .collection-card-elevated:hover .card-media-wrap img {
-  transform: scale(1.08);
+  transform: scale(1.05);
+}
+
+.collection-type-tag {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #0F172A;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 5px 12px;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  white-space: nowrap;
+  z-index: 5;
+  pointer-events: none;
+  border: 1px solid rgba(255, 255, 255, 0.8);
 }
 
 .card-text-body {
-  padding: 20px 24px 24px 24px;
+  padding: 22px 22px 24px 22px;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  background: #FFFFFF;
 }
 
 .card-meta-line {
   display: flex;
-  flex-direction: column;
-  gap: 2px;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
   margin-bottom: 10px;
 }
 
 .card-material {
   font-size: 0.72rem;
-  font-weight: 600;
+  font-weight: 700;
   color: #94A3B8;
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }
 
 .card-starting {
-  font-size: 0.82rem;
+  font-size: 0.84rem;
   font-weight: 700;
   color: #09090B;
+  white-space: nowrap;
 }
 
 .card-title {
   font-family: var(--font-heading);
-  font-size: 1.4rem;
-  font-weight: 500;
+  font-size: 1.35rem;
+  font-weight: 600;
   color: #09090B;
   margin-bottom: 8px;
+  line-height: 1.25;
 }
 
 .card-desc {
-  font-size: 0.88rem;
+  font-size: 0.86rem;
   color: #64748B;
-  line-height: 1.5;
-  margin-bottom: 18px;
+  line-height: 1.55;
+  margin-bottom: 20px;
+  min-height: 42px;
 }
 
 .card-action-row {
   margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid #F1F5F9;
 }
 
 .card-link-arrow {
-  font-size: 0.85rem;
+  font-size: 0.86rem;
   font-weight: 700;
   color: #09090B;
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  transition: gap 0.2s ease;
+  transition: all 0.25s ease;
 }
 
 .collection-card-elevated:hover .card-link-arrow {
   gap: 10px;
+  color: #1C3F34;
 }
 
 /* --------------------------------------------------------------------------

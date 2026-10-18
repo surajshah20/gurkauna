@@ -145,7 +145,7 @@ export default function HomePage({
         { name: 'Forest Green', hex: '#1C3F34', image: '/images/luggage-green.png' }
       ],
       sizes: ['Set of 3 (20" + 24" + 28")'],
-      image: '/images/luggage-green.png'
+      image: '/images/luggage-set.jpg'
     }
   ];
 
@@ -544,6 +544,7 @@ export default function HomePage({
 
             {/* 3. Elite Series */}
             <div className="collection-card-elevated reveal reveal-delay-3" onClick={() => setActivePage('shop')}>
+              <div className="card-badge-top badge-luxury">Flagship</div>
               <div className="card-media-wrap">
                 <span className="collection-type-tag">Flagship Luxury</span>
                 <img src="/images/luggage-blue.png" alt="Gurkauna Elite" />
@@ -563,9 +564,10 @@ export default function HomePage({
 
             {/* 4. Full Travel Sets */}
             <div className="collection-card-elevated reveal reveal-delay-4" onClick={() => setActivePage('shop')}>
+              <div className="card-badge-top badge-value">3-Piece Set</div>
               <div className="card-media-wrap">
                 <span className="collection-type-tag">Expedition Bundle</span>
-                <img src="/images/luggage-green.png" alt="Gurkauna Travel Sets" />
+                <img src="/images/luggage-set.jpg" alt="Gurkauna Travel Sets" />
               </div>
               <div className="card-text-body">
                 <div className="card-meta-line">

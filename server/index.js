@@ -180,7 +180,7 @@ const products = [
       'Matching Color Accessories Bag Included',
       'Integrated TSA Lock on All 3 Suitcases'
     ],
-    image: '/images/luggage-green.png'
+    image: '/images/luggage-set.jpg'
   }
 ];
 
