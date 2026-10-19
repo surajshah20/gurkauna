@@ -198,7 +198,7 @@ export default function AboutPage({ setActivePage }) {
                <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: '2.5rem', fontWeight: '400', color: 'var(--color-dark)', lineHeight: '1.2', marginBottom: '24px' }}>Rooted in Nepal.<br/>Made for the world.</h2>
                <p style={{ fontSize: '1rem', color: '#52525B', lineHeight: '1.6', marginBottom: '32px' }}>Nepal is more than just where we're from, it's our inspiration. The mountains, the people, the culture, and the spirit of adventure shape everything we do. Gurkauna is our way of sharing a piece of Nepal with the world.</p>
                <button 
-                  onClick={() => setActivePage('about')} 
+                  onClick={() => setActivePage('why-gurkauna')} 
                   style={{ color: '#E11D48', fontWeight: '700', fontSize: '0.9rem', background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px', padding: 0 }}
                >
                   Our Journey <ArrowRight size={16} />

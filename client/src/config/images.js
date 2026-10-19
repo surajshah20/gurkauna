@@ -8,8 +8,8 @@ export const PLACEHOLDER_IMAGES = {
   
   // Editorial / Brand
   editorialDifference: '/images/luggage-black.png',
-  brandStory: 'https://images.unsplash.com/photo-1522814881329-87c2fb2d36d8?auto=format&fit=crop&w=1600&q=80',
-  aboutHero: 'https://images.unsplash.com/photo-1542289659-450f28876c2b?auto=format&fit=crop&w=1600&q=80',
+  brandStory: '/images/nepal-brand-story.jpg',
+  aboutHero: '/images/about-hero.jpg',
   
   // Collections
   collectionClassic: '/images/luggage-black.png',
