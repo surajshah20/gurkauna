@@ -8,9 +8,12 @@ export default function GurkaunaLogo({
   onClick 
 }) {
   const isLight = variant === 'white' || variant === 'light';
-  const textColor = isLight ? '#FFFFFF' : '#09090B';
-  const subColor = isLight ? 'rgba(255, 255, 255, 0.65)' : '#71717A';
+  const textColor = isLight ? '#FFFFFF' : '#0F172A';
+  const subColor = isLight ? 'rgba(255, 255, 255, 0.65)' : '#64748B';
+  const iconStroke = isLight ? '#FFFFFF' : '#0F172A';
   const accentColor = '#991B1B'; // Rich Himalayan Garnet
+
+  const iconSize = typeof height === 'number' ? Math.round(height * 0.85) : 32;
 
   return (
     <div 
@@ -19,47 +22,52 @@ export default function GurkaunaLogo({
       style={{ 
         display: 'inline-flex', 
         alignItems: 'center', 
-        gap: '12px',
+        gap: '10px',
         cursor: onClick ? 'pointer' : 'default',
         userSelect: 'none',
         textDecoration: 'none'
       }}
       role="banner"
     >
-      {/* Precision Geometric Monogram Emblem */}
+      {/* Professional Minimalist Emblem */}
       <svg 
-        width={typeof height === 'number' ? height * 0.9 : 32} 
-        height={typeof height === 'number' ? height : 36} 
-        viewBox="0 0 36 40" 
+        width={iconSize} 
+        height={iconSize} 
+        viewBox="0 0 32 32" 
         fill="none" 
         xmlns="http://www.w3.org/2000/svg"
         style={{ flexShrink: 0 }}
       >
-        {/* Telescoping Handle Silhouette */}
-        <rect x="11" y="2" width="14" height="4" rx="2" stroke={isLight ? '#FFFFFF' : '#0F172A'} strokeWidth="1.8" />
-        <line x1="14" y1="6" x2="14" y2="10" stroke={isLight ? '#FFFFFF' : '#0F172A'} strokeWidth="1.6" />
-        <line x1="22" y1="6" x2="22" y2="10" stroke={isLight ? '#FFFFFF' : '#0F172A'} strokeWidth="1.6" />
-
-        {/* Hard-Shell Suitcase Body with Precision Corner Armor */}
-        <rect x="4" y="9" width="28" height="26" rx="5" fill={isLight ? 'rgba(255,255,255,0.08)' : '#0F172A'} stroke={isLight ? '#FFFFFF' : '#0F172A'} strokeWidth="1.8" />
-        
-        {/* Luxury Vertical Grooves (Himalayan Ridges) */}
-        <line x1="12" y1="13" x2="12" y2="31" stroke={isLight ? 'rgba(255,255,255,0.5)' : '#334155'} strokeWidth="1.4" strokeLinecap="round" />
-        <line x1="18" y1="13" x2="18" y2="31" stroke={accentColor} strokeWidth="1.8" strokeLinecap="round" />
-        <line x1="24" y1="13" x2="24" y2="31" stroke={isLight ? 'rgba(255,255,255,0.5)' : '#334155'} strokeWidth="1.4" strokeLinecap="round" />
-
-        {/* 360 Hinomoto Wheel Base */}
-        <circle cx="9" cy="36.5" r="2.2" fill={isLight ? '#FFFFFF' : '#0F172A'} />
-        <circle cx="27" cy="36.5" r="2.2" fill={isLight ? '#FFFFFF' : '#0F172A'} />
+        {/* Outer Squircle Container */}
+        <rect 
+          x="2.5" 
+          y="2.5" 
+          width="27" 
+          height="27" 
+          rx="7" 
+          stroke={iconStroke} 
+          strokeWidth="2" 
+          fill={isLight ? 'rgba(255,255,255,0.06)' : 'rgba(15,23,42,0.03)'} 
+        />
+        {/* Minimalist Geometric 'G' Monogram */}
+        <path 
+          d="M20.5 11.5C19.3 9.9 17.4 9 15.5 9C11.9 9 9 11.9 9 15.5C9 19.1 11.9 22 15.5 22C18.6 22 21.2 19.8 21.8 16.8H15.5" 
+          stroke={iconStroke} 
+          strokeWidth="2.2" 
+          strokeLinecap="round" 
+          strokeLinejoin="round" 
+        />
+        {/* Red Accent Pivot Point */}
+        <circle cx="21.5" cy="11.5" r="1.5" fill={accentColor} />
       </svg>
 
-      {/* High-End Architectural Wordmark */}
+      {/* Clean Modern Typography */}
       <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1 }}>
         <span style={{ 
-          fontFamily: 'var(--font-body)', 
-          fontSize: typeof height === 'number' ? `${Math.round(height * 0.52)}px` : '18px', 
-          fontWeight: '800', 
-          letterSpacing: '0.22em', 
+          fontFamily: 'var(--font-accent, "Outfit", sans-serif)', 
+          fontSize: typeof height === 'number' ? `${Math.round(height * 0.48)}px` : '18px', 
+          fontWeight: '700', 
+          letterSpacing: '0.18em', 
           color: textColor,
           textTransform: 'uppercase'
         }}>
@@ -67,15 +75,15 @@ export default function GurkaunaLogo({
         </span>
         {showTagline && (
           <span style={{ 
-            fontFamily: 'var(--font-accent)', 
-            fontSize: typeof height === 'number' ? `${Math.round(height * 0.22)}px` : '8px', 
+            fontFamily: 'var(--font-body, sans-serif)', 
+            fontSize: typeof height === 'number' ? `${Math.max(8, Math.round(height * 0.2))}px` : '8px', 
             fontWeight: '600', 
-            letterSpacing: '0.28em', 
+            letterSpacing: '0.24em', 
             color: subColor,
             textTransform: 'uppercase',
             marginTop: '3px'
           }}>
-            KATHMANDU • EXPEDITION
+            KATHMANDU
           </span>
         )}
       </div>

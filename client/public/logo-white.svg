@@ -1,19 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" fill="none">
-  <!-- Telescopic Handle (Top) -->
-  <rect x="176" y="8" width="48" height="14" rx="7" fill="#FFFFFF"/>
-  <rect x="183" y="22" width="6" height="34" fill="#FFFFFF"/>
-  <rect x="211" y="22" width="6" height="34" fill="#FFFFFF"/>
-  <path d="M 140 60 Q 200 52 260 60" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
-
-  <!-- Brand Name "Gurkauna" -->
-  <text x="200" y="128" font-family="'Playfair Display', 'Georgia', serif" font-size="76" font-weight="400" fill="#FFFFFF" text-anchor="middle" letter-spacing="-0.5">Gurkauna</text>
-
-  <!-- Tagline "pack your world" -->
-  <text x="200" y="164" font-family="'Outfit', 'Courier Prime', sans-serif" font-size="28" font-weight="400" fill="#FFFFFF" text-anchor="middle" letter-spacing="4">pack your world</text>
-
-  <!-- Suitcase Base (Bottom) -->
-  <path d="M 133 182 H 267 C 267 182 267 218 200 218 C 133 218 133 182 133 182 Z" fill="#FFFFFF"/>
-  <!-- Wheels -->
-  <circle cx="165" cy="226" r="10" fill="#FFFFFF"/>
-  <circle cx="235" cy="226" r="10" fill="#FFFFFF"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 64" fill="none">
+  <!-- Minimalist Emblem -->
+  <g transform="translate(10, 8)">
+    <rect x="0" y="0" width="48" height="48" rx="12" stroke="#FFFFFF" stroke-width="3" fill="#FFFFFF" fill-opacity="0.08"/>
+    <path d="M31 17C29.2 14.5 26.2 13 23 13C17.5 13 13 17.5 13 23C13 28.5 17.5 33 23 33C27.8 33 31.8 29.5 32.8 25H23" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="32.5" cy="17" r="2.2" fill="#E11D48"/>
+  </g>
+  <!-- Wordmark -->
+  <text x="76" y="38" font-family="'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="28" font-weight="700" fill="#FFFFFF" letter-spacing="4">GURKAUNA</text>
+  <text x="77" y="52" font-family="'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="rgba(255,255,255,0.7)" letter-spacing="3.5">KATHMANDU</text>
 </svg>
