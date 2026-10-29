@@ -1146,19 +1146,18 @@
   position: relative;
   background-size: cover;
   background-position: center;
-  min-height: 350px;
+  min-height: 380px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 60px 20px;
-  margin-top: 70px; /* Offset for navbar */
+  padding: 80px 20px 60px;
 }
 
 .shop-hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(10, 10, 10, 0.4), rgba(10, 10, 10, 0.8));
+  background: linear-gradient(to bottom, rgba(10, 10, 10, 0.45), rgba(10, 10, 10, 0.75));
 }
 
 .shop-hero-container {
@@ -1174,7 +1173,7 @@
   font-size: 0.85rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--color-brand);
+  color: var(--color-champagne);
   margin-bottom: 16px;
   font-weight: 600;
 }
@@ -1182,10 +1181,12 @@
 .shop-hero-title {
   font-family: var(--font-heading);
   font-size: 3.5rem;
-  font-weight: 500;
-  line-height: 1.1;
+  font-weight: 600;
+  line-height: 1.15;
   margin-bottom: 16px;
   letter-spacing: -0.01em;
+  color: #FFFFFF;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
 }
 
 .shop-hero-subtitle {
