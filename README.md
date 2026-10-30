@@ -1,4 +1,4 @@
-# 🧳 Gurkauna — Pack Your World
+# 🧳 Gurkauna - Pack Your World
 
 **Premium Nepalese luggage brand** crafting durable, stylish suitcases engineered for journeys worth remembering.
 
@@ -9,26 +9,26 @@ A full-stack e-commerce web application built with **React 19**, **Vite**, and *
 ## ✨ Features
 
 ### 🛍️ Shopping Experience
-- **Product Catalog** — Browse 6 premium luggage products across Hard Shell, Soft Shell, Premium, and Travel Set categories
-- **Product Details** — Rich product pages with color/size selectors, image galleries, feature breakdowns, and customer reviews
-- **Smart Search** — Real-time search filtering across all products
-- **Collections** — Curated collection pages organized by material and product line
-- **Wishlist** — Save favorite products for later
+- **Product Catalog** - Browse 6 premium luggage products across Hard Shell, Soft Shell, Premium, and Travel Set categories
+- **Product Details** - Rich product pages with color/size selectors, image galleries, feature breakdowns, and customer reviews
+- **Smart Search** - Real-time search filtering across all products
+- **Collections** - Curated collection pages organized by material and product line
+- **Wishlist** - Save favorite products for later
 
 ### 🛒 Cart & Checkout
-- **Slide-out Cart Drawer** — Quick-access cart with quantity controls
-- **Full Cart Page** — Detailed cart management with recommended add-ons
-- **Multi-step Checkout** — Complete checkout flow with shipping info, payment method selection (eSewa, Khalti, COD), and order confirmation
-- **Order Tracking** — Track order status through Processing → Shipped → Delivered pipeline
+- **Slide-out Cart Drawer** - Quick-access cart with quantity controls
+- **Full Cart Page** - Detailed cart management with recommended add-ons
+- **Multi-step Checkout** - Complete checkout flow with shipping info, payment method selection (eSewa, Khalti, COD), and order confirmation
+- **Order Tracking** - Track order status through Processing → Shipped → Delivered pipeline
 
 ### 📄 Content Pages
-- **About / Brand Story** — Company mission, team, and Nepali heritage
-- **Why Gurkauna** — Product differentiators and quality benchmarks
-- **FAQ** — Frequently asked questions
-- **Shipping & Returns** — Delivery and return policy details
-- **Warranty** — Product warranty information
-- **Privacy Policy & Terms** — Legal pages
-- **Contact** — Contact form with API integration
+- **About / Brand Story** - Company mission, team, and Nepali heritage
+- **Why Gurkauna** - Product differentiators and quality benchmarks
+- **FAQ** - Frequently asked questions
+- **Shipping & Returns** - Delivery and return policy details
+- **Warranty** - Product warranty information
+- **Privacy Policy & Terms** - Legal pages
+- **Contact** - Contact form with API integration
 
 ### 🎨 Design
 - Modern glassmorphism UI with smooth page transitions and scroll-reveal animations
