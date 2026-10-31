@@ -12,9 +12,9 @@ export default function ShopPage({ products = [], onSelectProduct, onAddToCart, 
 
   // Sidebar filter states
   const [selectedSizes, setSelectedSizes] = useState([]);
-  const [selectedMaterials, setSelectedMaterials] = useState(['PC + ABS']);
-  const [selectedCollections, setSelectedCollections] = useState(['Pro']);
-  const [selectedPriceRanges, setSelectedPriceRanges] = useState(['10k-15k']);
+  const [selectedMaterials, setSelectedMaterials] = useState([]);
+  const [selectedCollections, setSelectedCollections] = useState([]);
+  const [selectedPriceRanges, setSelectedPriceRanges] = useState([]);
   const [selectedColor, setSelectedColor] = useState(null);
 
   // Mobile filter drawer state
