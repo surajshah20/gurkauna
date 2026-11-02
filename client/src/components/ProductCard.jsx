@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Heart, ArrowRight } from 'lucide-react';
+import { Heart, ShoppingBag } from 'lucide-react';
 
 export default function ProductCard({ 
   product, 
@@ -12,99 +12,71 @@ export default function ProductCard({
   const [selectedSize, setSelectedSize] = useState(
     product.sizes?.[0] || '24"'
   );
+  const [isHovered, setIsHovered] = useState(false);
 
   const selectedColor = product.colors?.[activeColorIndex] || product.colors?.[0] || {};
   const displayImage = selectedColor.image || product.image;
 
-  // Format badge color
-  const isRedBadge = product.badge === 'Bestseller' || product.badge === 'Popular' || product.badge === 'Best Seller' || product.badge === 'Value Set';
-
   return (
-    <div className="shop-product-card">
-      {/* Badge */}
-      {product.badge && (
-        <div className={`shop-card-badge ${isRedBadge ? 'badge-red' : 'badge-green'}`}>
-          {product.badge}
-        </div>
-      )}
-
-      {/* Wishlist Button */}
-      <button 
-        className={`shop-card-wishlist ${isWishlisted ? 'active' : ''}`}
-        onClick={(e) => {
-          e.stopPropagation();
-          if (onToggleWishlist) onToggleWishlist(product);
-        }}
-        title="Add to Wishlist"
-        aria-label="Wishlist"
-      >
-        <Heart 
-          size={16} 
-          fill={isWishlisted ? 'var(--color-brand)' : 'none'} 
-          stroke={isWishlisted ? 'var(--color-brand)' : '#3F3F46'} 
-        />
-      </button>
-
-      {/* Image Container */}
+    <div 
+      className="product-card-minimal"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {/* Image */}
       <div 
-        className="shop-card-img-container" 
+        className="product-card-image"
         onClick={() => onSelectProduct && onSelectProduct(product)}
       >
         <img 
           src={displayImage} 
           alt={product.name} 
-          className="shop-card-img" 
           loading="lazy" 
         />
+
+        {/* Wishlist — only show on hover */}
+        <button 
+          className={`product-wishlist-btn ${isWishlisted ? 'active' : ''}`}
+          onClick={(e) => {
+            e.stopPropagation();
+            if (onToggleWishlist) onToggleWishlist(product);
+          }}
+          style={{ opacity: isHovered || isWishlisted ? 1 : 0 }}
+          aria-label="Wishlist"
+        >
+          <Heart 
+            size={15} 
+            fill={isWishlisted ? 'var(--color-text-primary)' : 'none'} 
+            stroke={isWishlisted ? 'var(--color-text-primary)' : 'currentColor'} 
+          />
+        </button>
+
+        {/* Quick add — only on hover */}
+        <button 
+          className="product-quick-add"
+          style={{ 
+            opacity: isHovered ? 1 : 0,
+            transform: isHovered ? 'translateY(0)' : 'translateY(8px)'
+          }}
+          onClick={(e) => {
+            e.stopPropagation();
+            onAddToCart && onAddToCart(product, selectedSize, selectedColor.name);
+          }}
+        >
+          <ShoppingBag size={14} />
+          Add to Bag
+        </button>
       </div>
 
-      {/* Product Details Body */}
-      <div className="shop-card-body">
-        <h3 
-          className="shop-card-title"
-          onClick={() => onSelectProduct && onSelectProduct(product)}
-        >
-          {product.name}
-        </h3>
-
-        <div className="shop-card-material">
-          {product.subtitle || product.material || 'Hard Shell Suitcase'}
-        </div>
-
-        {/* Size Pills */}
-        <div className="shop-card-size-pills">
-          {product.sizes && product.sizes.length > 0 ? (
-            product.sizes.map((s, idx) => {
-              const displayLabel = s.includes('20"') ? '20"' : s.includes('24"') ? '24"' : s.includes('28"') ? '28"' : s;
-              return (
-                <button
-                  key={idx}
-                  className={`size-tag-pill ${selectedSize === s ? 'active' : ''}`}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setSelectedSize(s);
-                  }}
-                >
-                  {displayLabel}
-                </button>
-              );
-            })
-          ) : (
-            <>
-              <button className="size-tag-pill active">20"</button>
-              <button className="size-tag-pill">24"</button>
-              <button className="size-tag-pill">28"</button>
-            </>
-          )}
-        </div>
-
-        {/* Color Swatches */}
-        {product.colors && product.colors.length > 0 && (
-          <div className="shop-card-swatches">
+      {/* Info */}
+      <div className="product-card-info">
+        {/* Color dots */}
+        {product.colors && product.colors.length > 1 && (
+          <div className="product-card-colors">
             {product.colors.map((c, idx) => (
               <button
                 key={idx}
-                className={`shop-swatch-btn ${idx === activeColorIndex ? 'active' : ''}`}
+                className={`color-dot ${idx === activeColorIndex ? 'active' : ''}`}
                 style={{ backgroundColor: c.hex }}
                 title={c.name}
                 aria-label={c.name}
@@ -117,19 +89,16 @@ export default function ProductCard({
           </div>
         )}
 
-        {/* Price & CTA Button */}
-        <div className="shop-card-footer">
-          <div className="shop-card-price">
-            NPR {product.price?.toLocaleString()}
-          </div>
+        <h3 
+          className="product-card-name"
+          onClick={() => onSelectProduct && onSelectProduct(product)}
+        >
+          {product.name}
+        </h3>
 
-          <button 
-            className="shop-card-add-btn"
-            onClick={() => onAddToCart && onAddToCart(product, selectedSize, selectedColor.name)}
-          >
-            Add to Cart <ArrowRight size={14} />
-          </button>
-        </div>
+        <span className="product-card-price">
+          NPR {product.price?.toLocaleString()}
+        </span>
       </div>
     </div>
   );

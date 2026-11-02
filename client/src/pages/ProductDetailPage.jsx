@@ -2,7 +2,15 @@ import React, { useState } from 'react';
 import { Star, ShieldCheck, RefreshCw, Lock, Truck, ShoppingBag, ArrowLeft, Heart, ChevronRight } from 'lucide-react';
 import ProductCard from '../components/ProductCard';
 
-export default function ProductDetailPage({ product, allProducts = [], onAddToCart, onSelectProduct, wishlist = [], onToggleWishlist, setActivePage }) {
+export default function ProductDetailPage({ 
+  product, 
+  allProducts = [], 
+  onAddToCart, 
+  onSelectProduct, 
+  wishlist = [], 
+  onToggleWishlist, 
+  setActivePage 
+}) {
   const [selectedSize, setSelectedSize] = useState(product?.sizes?.[0] || '24" (Medium)');
   const [selectedColor, setSelectedColor] = useState(product?.colors?.[0] || { name: 'Forest Green', hex: '#1C3F34' });
   const [quantity, setQuantity] = useState(1);
@@ -14,63 +22,216 @@ export default function ProductDetailPage({ product, allProducts = [], onAddToCa
   const recommendations = allProducts.filter(p => p.id !== product.id).slice(0, 4);
 
   return (
-    <div style={{ paddingBottom: '80px', backgroundColor: '#FAFAFA' }}>
+    <div style={{ paddingBottom: '100px', backgroundColor: 'var(--color-bg)', minHeight: '100vh' }}>
       <style dangerouslySetInnerHTML={{__html: `
+        .pdp-wrapper {
+          max-width: var(--max-width);
+          margin: 0 auto;
+          padding: 0 var(--space-lg);
+        }
         .product-grid-layout {
           display: grid;
           grid-template-columns: 1fr;
-          gap: 60px;
+          gap: 48px;
+        }
+        .gallery-main {
+          background: #FFFFFF;
+          border-radius: var(--radius-2xl);
+          border: 1px solid var(--color-border);
+          overflow: hidden;
+          height: 540px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 40px;
+          transition: all var(--duration-normal) var(--ease-out);
+        }
+        .gallery-main img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          mix-blend-mode: multiply;
         }
         .gallery-thumbnails {
           display: flex;
           gap: 12px;
           margin-top: 16px;
-          overflow-x: auto;
-          padding-bottom: 8px;
         }
-        .gallery-thumbnails::-webkit-scrollbar {
-          height: 4px;
+        .gallery-thumb-btn {
+          width: 72px;
+          height: 72px;
+          border-radius: var(--radius-md);
+          background: #FFFFFF;
+          border: 1px solid var(--color-border);
+          padding: 6px;
+          cursor: pointer;
+          transition: all var(--duration-fast) ease;
         }
-        .gallery-thumbnails::-webkit-scrollbar-thumb {
-          background: #D4D4D8;
-          border-radius: 4px;
+        .gallery-thumb-btn.active {
+          border-color: var(--color-text-primary);
+          box-shadow: 0 0 0 1px var(--color-text-primary);
+        }
+        .gallery-thumb-btn img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          mix-blend-mode: multiply;
+        }
+        .pdp-tag {
+          display: inline-block;
+          font-size: 0.72rem;
+          font-weight: 600;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          color: var(--color-brand);
+          margin-bottom: 8px;
+        }
+        .pdp-title {
+          font-size: clamp(2rem, 3.5vw, 2.8rem);
+          font-weight: 600;
+          letter-spacing: -0.03em;
+          color: var(--color-text-primary);
+          line-height: 1.1;
+          margin-bottom: 8px;
+        }
+        .pdp-subtitle {
+          font-size: 1rem;
+          color: var(--color-text-secondary);
+          margin-bottom: 24px;
+        }
+        .pdp-price {
+          font-size: 1.8rem;
+          font-weight: 600;
+          letter-spacing: -0.02em;
+          color: var(--color-text-primary);
+        }
+        .pdp-pill-btn {
+          padding: 10px 20px;
+          border-radius: var(--radius-full);
+          font-size: 0.88rem;
+          font-weight: 500;
+          cursor: pointer;
+          transition: all var(--duration-fast) ease;
+          border: 1px solid var(--color-border-strong);
+          background: transparent;
+          color: var(--color-text-primary);
+        }
+        .pdp-pill-btn.active {
+          background: var(--color-text-primary);
+          color: var(--color-white);
+          border-color: var(--color-text-primary);
+        }
+        .pdp-color-swatch {
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          border: none;
+          outline: 2px solid transparent;
+          outline-offset: 3px;
+          cursor: pointer;
+          transition: all var(--duration-fast) ease;
+        }
+        .pdp-color-swatch.active {
+          outline-color: var(--color-text-primary);
+          transform: scale(1.06);
+        }
+        .pdp-add-btn {
+          flex: 1;
+          background: var(--color-text-primary);
+          color: var(--color-white);
+          font-size: 0.95rem;
+          font-weight: 500;
+          padding: 16px 32px;
+          border-radius: var(--radius-full);
+          border: none;
+          cursor: pointer;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          transition: opacity var(--duration-fast) ease;
+        }
+        .pdp-add-btn:hover {
+          opacity: 0.85;
+        }
+        .pdp-wish-btn {
+          width: 52px;
+          height: 52px;
+          border-radius: var(--radius-full);
+          background: #FFFFFF;
+          border: 1px solid var(--color-border-strong);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          transition: all var(--duration-fast) ease;
+        }
+        .pdp-wish-btn:hover {
+          border-color: var(--color-text-primary);
+        }
+        .pdp-features-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 16px;
+          background: #FFFFFF;
+          border: 1px solid var(--color-border);
+          border-radius: var(--radius-lg);
+          padding: 20px;
+          margin-bottom: 32px;
+        }
+        .pdp-feature-item {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          font-size: 0.85rem;
+          font-weight: 500;
+          color: var(--color-text-primary);
+        }
+        .pdp-feature-icon {
+          color: var(--color-text-secondary);
         }
         @media (min-width: 1024px) {
           .product-grid-layout {
-            grid-template-columns: 1.2fr 1fr;
+            grid-template-columns: 1.15fr 1fr;
             align-items: start;
-          }
-          .gallery-thumbnails {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            overflow-x: visible;
+            gap: 64px;
           }
         }
       `}} />
 
       {/* Breadcrumb & Back */}
-      <div style={{ maxWidth: '1280px', margin: '20px auto 32px', padding: '0 24px', display: 'flex', alignItems: 'center', gap: '12px' }}>
+      <div className="pdp-wrapper" style={{ margin: '24px auto 32px', display: 'flex', alignItems: 'center', gap: '12px' }}>
         <button 
           onClick={() => setActivePage('shop')} 
-          style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.9rem', color: '#71717A', fontWeight: '600', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+          style={{ 
+            display: 'inline-flex', 
+            alignItems: 'center', 
+            gap: '6px', 
+            fontSize: '0.85rem', 
+            color: 'var(--color-text-secondary)', 
+            fontWeight: '500', 
+            background: 'none', 
+            border: 'none', 
+            cursor: 'pointer', 
+            padding: 0 
+          }}
         >
-          <ArrowLeft size={16} /> Back to Shop
+          <ArrowLeft size={15} /> All Luggage
         </button>
-        <span style={{ color: '#D4D4D8' }}>/</span>
-        <span style={{ fontSize: '0.9rem', color: 'var(--color-dark)', fontWeight: '500' }}>{product.name}</span>
+        <span style={{ color: 'var(--color-border-strong)' }}>/</span>
+        <span style={{ fontSize: '0.85rem', color: 'var(--color-text-primary)', fontWeight: '500' }}>{product.name}</span>
       </div>
 
       {/* Main Detail Grid */}
-      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
+      <div className="pdp-wrapper">
         <div className="product-grid-layout">
           
           {/* Left: Gallery */}
           <div>
-            <div style={{ background: '#F4F4F5', borderRadius: 'var(--radius-lg)', overflow: 'hidden', height: '500px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div className="gallery-main">
               <img 
                 src={selectedColor.image || product.image} 
                 alt={product.name} 
-                style={{ width: '100%', height: '100%', objectFit: 'contain' }} 
               />
             </div>
             
@@ -78,21 +239,11 @@ export default function ProductDetailPage({ product, allProducts = [], onAddToCa
               {product.colors?.map((c, idx) => (
                 <button
                   key={idx}
-                  style={{ 
-                    border: selectedColor.name === c.name ? '2px solid var(--color-brand)' : '1px solid #E4E4E7', 
-                    borderRadius: 'var(--radius-md)', 
-                    overflow: 'hidden', 
-                    background: '#F4F4F5',
-                    cursor: 'pointer',
-                    padding: 0,
-                    aspectRatio: '1',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center'
-                  }}
+                  className={`gallery-thumb-btn ${selectedColor.name === c.name ? 'active' : ''}`}
                   onClick={() => setSelectedColor(c)}
+                  title={c.name}
                 >
-                  <img src={c.image || product.image} alt={c.name} style={{ width: '80%', height: '80%', objectFit: 'contain' }} />
+                  <img src={c.image || product.image} alt={c.name} />
                 </button>
               ))}
             </div>
@@ -100,89 +251,57 @@ export default function ProductDetailPage({ product, allProducts = [], onAddToCa
 
           {/* Right: Info Column */}
           <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
-              {product.badge && (
-                <span style={{ background: '#E11D48', color: 'white', padding: '4px 10px', borderRadius: '40px', fontSize: '0.75rem', fontWeight: '700', textTransform: 'uppercase' }}>
-                  {product.badge}
-                </span>
-              )}
-              <span style={{ fontSize: '0.85rem', color: '#10B981', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                <span style={{ width: '6px', height: '6px', background: '#10B981', borderRadius: '50%' }}></span> In Stock - Ready to Ship
-              </span>
-            </div>
+            <span className="pdp-tag">Gurkauna Precision Series</span>
 
-            <h1 style={{ fontFamily: 'var(--font-heading)', fontSize: '2.8rem', fontWeight: '500', color: 'var(--color-dark)', marginBottom: '8px' }}>
+            <h1 className="pdp-title">
               {product.name}
             </h1>
-            <div style={{ fontSize: '1rem', color: '#71717A', marginBottom: '20px' }}>
-              {product.subtitle || 'ABS Hard Shell Suitcase'}
+            <div className="pdp-subtitle">
+              {product.subtitle || 'Polycarbonate Hard-Shell Luggage'}
             </div>
 
-            {/* Rating */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '24px' }}>
-              <div style={{ display: 'flex', color: '#F59E0B' }}>
-                {[...Array(5)].map((_, i) => <Star key={i} size={16} fill="#F59E0B" />)}
-              </div>
-              <span style={{ fontWeight: '700', color: 'var(--color-dark)', fontSize: '0.9rem' }}>{product.rating || '4.8'}</span>
-              <span style={{ fontSize: '0.9rem', color: '#71717A' }}>({product.reviewsCount || '94'} verified traveler reviews)</span>
-            </div>
-
-            {/* Price */}
-            <div style={{ marginBottom: '32px', display: 'flex', alignItems: 'center', gap: '16px' }}>
-              <span style={{ fontSize: '2.2rem', fontWeight: '700', color: '#E11D48' }}>
+            {/* Price & Rating */}
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: '16px', marginBottom: '24px' }}>
+              <span className="pdp-price">
                 NPR {product.price?.toLocaleString()}
               </span>
-              {product.originalPrice && (
-                <span style={{ fontSize: '1.2rem', color: '#A1A1AA', textDecoration: 'line-through' }}>
-                  NPR {product.originalPrice?.toLocaleString()}
-                </span>
-              )}
-              {product.originalPrice && (
-                <span style={{ fontSize: '0.8rem', background: '#DCFCE7', color: '#15803D', fontWeight: '700', padding: '4px 8px', borderRadius: '4px' }}>
-                  Save {Math.round((1 - product.price/product.originalPrice)*100)}%
-                </span>
-              )}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <Star size={14} fill="#1D1D1F" color="#1D1D1F" />
+                <span style={{ fontWeight: '600', fontSize: '0.88rem', color: 'var(--color-text-primary)' }}>4.9</span>
+                <span style={{ fontSize: '0.82rem', color: 'var(--color-text-tertiary)' }}>(300+ reviews)</span>
+              </div>
             </div>
 
-            <p style={{ color: '#52525B', fontSize: '1rem', lineHeight: '1.6', marginBottom: '32px' }}>
-              {product.description || 'The Gurkauna Classic is engineered for everyday explorers. Crafted from lightweight yet impact-resistant ABS shell, it features whisper-quiet 360° spinner wheels and a secure TSA combination lock.'}
+            <p style={{ color: 'var(--color-text-secondary)', fontSize: '0.95rem', lineHeight: '1.6', marginBottom: '32px' }}>
+              {product.description || 'Engineered with high-impact aerospace polycarbonate, whisper-quiet Hinomoto spinner wheels, and an integrated TSA security lock. Designed to withstand extreme transit while maintaining timeless elegance.'}
             </p>
 
-            {/* Highlights Grid */}
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', background: 'white', border: '1px solid #E4E4E7', padding: '24px', borderRadius: 'var(--radius-lg)', marginBottom: '32px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.9rem', fontWeight: '600', color: 'var(--color-dark)' }}>
-                <ShieldCheck size={18} style={{ color: '#E11D48' }} /> {product.material || 'ABS'} Material
+            {/* Features summary */}
+            <div className="pdp-features-grid">
+              <div className="pdp-feature-item">
+                <ShieldCheck size={18} className="pdp-feature-icon" /> {product.material || 'Aerospace Polycarbonate'}
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.9rem', fontWeight: '600', color: 'var(--color-dark)' }}>
-                <RefreshCw size={18} style={{ color: '#E11D48' }} /> 360° Silent Spinner Wheels
+              <div className="pdp-feature-item">
+                <RefreshCw size={18} className="pdp-feature-icon" /> 360° Silent Spinner Wheels
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.9rem', fontWeight: '600', color: 'var(--color-dark)' }}>
-                <Lock size={18} style={{ color: '#E11D48' }} /> Integrated TSA Lock
+              <div className="pdp-feature-item">
+                <Lock size={18} className="pdp-feature-icon" /> TSA-Approved Lock
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.9rem', fontWeight: '600', color: 'var(--color-dark)' }}>
-                <Truck size={18} style={{ color: '#E11D48' }} /> Free Delivery in Nepal
+              <div className="pdp-feature-item">
+                <Truck size={18} className="pdp-feature-icon" /> Free Express Delivery in Nepal
               </div>
             </div>
 
             {/* Size Options */}
-            <div style={{ marginBottom: '24px' }}>
-              <label style={{ fontSize: '0.85rem', fontWeight: '700', textTransform: 'uppercase', color: '#71717A', display: 'block', marginBottom: '12px' }}>
-                Select Size
+            <div style={{ marginBottom: '28px' }}>
+              <label style={{ fontSize: '0.78rem', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--color-text-secondary)', display: 'block', marginBottom: '12px' }}>
+                Select Size: <span style={{ color: 'var(--color-text-primary)', textTransform: 'none' }}>{selectedSize}</span>
               </label>
-              <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+              <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
                 {product.sizes?.map((sz) => (
                   <button
                     key={sz}
-                    style={{
-                      padding: '12px 20px',
-                      background: selectedSize === sz ? 'var(--color-dark)' : 'white',
-                      color: selectedSize === sz ? 'white' : 'var(--color-dark)',
-                      border: selectedSize === sz ? '1px solid var(--color-dark)' : '1px solid #E4E4E7',
-                      borderRadius: 'var(--radius-md)',
-                      fontSize: '0.95rem',
-                      fontWeight: '600',
-                      cursor: 'pointer'
-                    }}
+                    className={`pdp-pill-btn ${selectedSize === sz ? 'active' : ''}`}
                     onClick={() => setSelectedSize(sz)}
                   >
                     {sz}
@@ -192,25 +311,16 @@ export default function ProductDetailPage({ product, allProducts = [], onAddToCa
             </div>
 
             {/* Color Options */}
-            <div style={{ marginBottom: '32px' }}>
-              <label style={{ fontSize: '0.85rem', fontWeight: '700', textTransform: 'uppercase', color: '#71717A', display: 'block', marginBottom: '12px' }}>
-                Select Color: <span style={{ color: 'var(--color-dark)', textTransform: 'none' }}>{selectedColor.name}</span>
+            <div style={{ marginBottom: '36px' }}>
+              <label style={{ fontSize: '0.78rem', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--color-text-secondary)', display: 'block', marginBottom: '12px' }}>
+                Color: <span style={{ color: 'var(--color-text-primary)', textTransform: 'none' }}>{selectedColor.name}</span>
               </label>
-              <div style={{ display: 'flex', gap: '12px' }}>
+              <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
                 {product.colors?.map((c, idx) => (
                   <button
                     key={idx}
-                    style={{
-                      width: '40px',
-                      height: '40px',
-                      borderRadius: '50%',
-                      background: c.hex,
-                      border: selectedColor.name === c.name ? '2px solid var(--color-dark)' : '1px solid #D4D4D8',
-                      outline: selectedColor.name === c.name ? '2px solid white' : 'none',
-                      outlineOffset: '-4px',
-                      cursor: 'pointer',
-                      boxShadow: 'var(--shadow-sm)'
-                    }}
+                    className={`pdp-color-swatch ${selectedColor.name === c.name ? 'active' : ''}`}
+                    style={{ backgroundColor: c.hex }}
                     onClick={() => setSelectedColor(c)}
                     title={c.name}
                   />
@@ -219,110 +329,111 @@ export default function ProductDetailPage({ product, allProducts = [], onAddToCa
             </div>
 
             {/* Qty & Actions */}
-            <div style={{ display: 'flex', gap: '16px', marginBottom: '40px' }}>
+            <div style={{ display: 'flex', gap: '14px', marginBottom: '40px' }}>
               {/* Quantity */}
-              <div style={{ display: 'flex', alignItems: 'center', background: 'white', border: '1px solid #E4E4E7', borderRadius: 'var(--radius-md)', padding: '4px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', background: '#FFFFFF', border: '1px solid var(--color-border-strong)', borderRadius: 'var(--radius-full)', padding: '2px 8px' }}>
                 <button 
-                  style={{ width: '40px', height: '40px', background: 'transparent', border: 'none', fontSize: '1.2rem', cursor: 'pointer', color: '#52525B' }}
+                  style={{ width: '32px', height: '36px', background: 'transparent', border: 'none', fontSize: '1.1rem', cursor: 'pointer', color: 'var(--color-text-primary)' }}
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                  aria-label="Decrease quantity"
                 >-</button>
                 <input 
                   type="text" 
                   value={quantity} 
                   readOnly 
-                  style={{ width: '40px', height: '40px', textAlign: 'center', border: 'none', background: 'transparent', fontSize: '1rem', fontWeight: '600' }} 
+                  style={{ width: '30px', textAlign: 'center', border: 'none', background: 'transparent', fontSize: '0.92rem', fontWeight: '600', color: 'var(--color-text-primary)' }} 
                 />
                 <button 
-                  style={{ width: '40px', height: '40px', background: 'transparent', border: 'none', fontSize: '1.2rem', cursor: 'pointer', color: '#52525B' }}
+                  style={{ width: '32px', height: '36px', background: 'transparent', border: 'none', fontSize: '1.1rem', cursor: 'pointer', color: 'var(--color-text-primary)' }}
                   onClick={() => setQuantity(quantity + 1)}
+                  aria-label="Increase quantity"
                 >+</button>
               </div>
 
               {/* Add to Cart */}
               <button
-                style={{ flexGrow: 1, background: '#E11D48', color: 'white', padding: '0 24px', borderRadius: 'var(--radius-md)', fontSize: '1rem', fontWeight: '700', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', border: 'none', cursor: 'pointer' }}
+                className="pdp-add-btn"
                 onClick={() => onAddToCart(product, selectedSize, selectedColor.name, quantity)}
               >
-                <ShoppingBag size={20} /> Add to Cart
+                <ShoppingBag size={18} /> Add to Bag
               </button>
 
               {/* Wishlist */}
               <button
-                style={{ width: '56px', height: '56px', background: 'white', border: '1px solid #E4E4E7', borderRadius: 'var(--radius-md)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}
+                className="pdp-wish-btn"
                 onClick={() => onToggleWishlist(product)}
+                aria-label="Toggle Wishlist"
               >
-                <Heart size={24} fill={isWishlisted ? '#E11D48' : 'none'} color={isWishlisted ? '#E11D48' : '#71717A'} />
+                <Heart size={20} fill={isWishlisted ? 'var(--color-brand)' : 'none'} color={isWishlisted ? 'var(--color-brand)' : 'var(--color-text-primary)'} />
               </button>
             </div>
 
             {/* Accordion tabs */}
-            <div style={{ borderTop: '1px solid #E4E4E7', paddingTop: '24px' }}>
-              <div style={{ display: 'flex', gap: '24px', borderBottom: '1px solid #E4E4E7', marginBottom: '24px' }}>
+            <div style={{ borderTop: '1px solid var(--color-border)', paddingTop: '24px' }}>
+              <div style={{ display: 'flex', gap: '28px', borderBottom: '1px solid var(--color-border)', marginBottom: '24px' }}>
                 {['details', 'shipping', 'reviews'].map((tab) => (
                   <button
                     key={tab}
                     onClick={() => setActiveTab(tab)}
                     style={{
                       padding: '0 0 12px 0',
-                      fontWeight: '700',
-                      fontSize: '0.95rem',
-                      color: activeTab === tab ? '#E11D48' : '#71717A',
+                      fontWeight: activeTab === tab ? '600' : '400',
+                      fontSize: '0.9rem',
+                      color: activeTab === tab ? 'var(--color-text-primary)' : 'var(--color-text-secondary)',
                       border: 'none',
-                      borderBottom: activeTab === tab ? '2px solid #E11D48' : '2px solid transparent',
+                      borderBottom: activeTab === tab ? '2px solid var(--color-text-primary)' : '2px solid transparent',
                       background: 'transparent',
-                      textTransform: 'capitalize',
                       cursor: 'pointer',
-                      marginBottom: '-1px'
+                      marginBottom: '-1px',
+                      transition: 'color var(--duration-fast) ease'
                     }}
                   >
-                    {tab === 'details' ? 'Product Details' : tab === 'shipping' ? 'Shipping & Returns' : 'Customer Reviews'}
+                    {tab === 'details' ? 'Specifications' : tab === 'shipping' ? 'Shipping & Returns' : 'Reviews'}
                   </button>
                 ))}
               </div>
 
               {activeTab === 'details' && (
-                <ul style={{ listStyle: 'none', padding: 0, margin: 0, color: '#52525B', fontSize: '0.95rem', lineHeight: '1.8' }}>
+                <ul style={{ listStyle: 'none', padding: 0, margin: 0, color: 'var(--color-text-secondary)', fontSize: '0.9rem', lineHeight: '1.8' }}>
                   {product.features?.map((f, i) => (
                     <li key={i} style={{ position: 'relative', paddingLeft: '16px', marginBottom: '8px' }}>
-                      <span style={{ position: 'absolute', left: 0, color: '#E11D48' }}>•</span> {f}
+                      <span style={{ position: 'absolute', left: 0, color: 'var(--color-text-primary)' }}>·</span> {f}
                     </li>
                   ))}
                   {!product.features && (
                     <>
-                      <li style={{ position: 'relative', paddingLeft: '16px', marginBottom: '8px' }}><span style={{ position: 'absolute', left: 0, color: '#E11D48' }}>•</span> Scratch-resistant ABS outer shell</li>
-                      <li style={{ position: 'relative', paddingLeft: '16px', marginBottom: '8px' }}><span style={{ position: 'absolute', left: 0, color: '#E11D48' }}>•</span> TSA-approved combination lock</li>
-                      <li style={{ position: 'relative', paddingLeft: '16px', marginBottom: '8px' }}><span style={{ position: 'absolute', left: 0, color: '#E11D48' }}>•</span> 360-degree silent spinner wheels</li>
-                      <li style={{ position: 'relative', paddingLeft: '16px', marginBottom: '8px' }}><span style={{ position: 'absolute', left: 0, color: '#E11D48' }}>•</span> Spacious interior with mesh dividers</li>
+                      <li style={{ position: 'relative', paddingLeft: '16px', marginBottom: '8px' }}><span style={{ position: 'absolute', left: 0, color: 'var(--color-text-primary)' }}>·</span> Aerospace-grade impact polycarbonate shell</li>
+                      <li style={{ position: 'relative', paddingLeft: '16px', marginBottom: '8px' }}><span style={{ position: 'absolute', left: 0, color: 'var(--color-text-primary)' }}>·</span> Integrated TSA combination security lock</li>
+                      <li style={{ position: 'relative', paddingLeft: '16px', marginBottom: '8px' }}><span style={{ position: 'absolute', left: 0, color: 'var(--color-text-primary)' }}>·</span> 360° silent Hinomoto Japanese spinner wheels</li>
+                      <li style={{ position: 'relative', paddingLeft: '16px', marginBottom: '8px' }}><span style={{ position: 'absolute', left: 0, color: 'var(--color-text-primary)' }}>·</span> Dual interior compression dividers with zip pockets</li>
                     </>
                   )}
                 </ul>
               )}
 
               {activeTab === 'shipping' && (
-                <div style={{ fontSize: '0.95rem', color: '#52525B', lineHeight: '1.6' }}>
-                  <p style={{ marginBottom: '12px' }}><strong style={{ color: 'var(--color-dark)' }}>Kathmandu Valley:</strong> Same-day or next-day delivery (FREE on orders over NPR 20,000).</p>
-                  <p style={{ marginBottom: '12px' }}><strong style={{ color: 'var(--color-dark)' }}>Outside Kathmandu Valley:</strong> 2-4 business days via reliable courier partners.</p>
-                  <p><strong style={{ color: 'var(--color-dark)' }}>Returns:</strong> 7-day no-questions-asked return policy on unused items in original packaging.</p>
+                <div style={{ fontSize: '0.9rem', color: 'var(--color-text-secondary)', lineHeight: '1.6' }}>
+                  <p style={{ marginBottom: '12px' }}><strong style={{ color: 'var(--color-text-primary)' }}>Kathmandu Valley:</strong> Complimentary next-day hand delivery.</p>
+                  <p style={{ marginBottom: '12px' }}><strong style={{ color: 'var(--color-text-primary)' }}>All Nepal Districts:</strong> 2-4 business days via insured transit partners.</p>
+                  <p><strong style={{ color: 'var(--color-text-primary)' }}>Warranty & Returns:</strong> 10-year warranty with hassle-free 7-day returns.</p>
                 </div>
               )}
 
               {activeTab === 'reviews' && (
-                <div style={{ fontSize: '0.95rem', color: '#52525B' }}>
+                <div style={{ fontSize: '0.9rem', color: 'var(--color-text-secondary)' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
-                    <div style={{ display: 'flex', color: '#F59E0B' }}>
-                       {[...Array(5)].map((_, i) => <Star key={i} size={18} fill={i === 4 ? "none" : "#F59E0B"} />)}
+                    <div style={{ display: 'flex', color: 'var(--color-text-primary)' }}>
+                       {[...Array(5)].map((_, i) => <Star key={i} size={15} fill="#1D1D1F" />)}
                     </div>
-                    <span style={{ fontWeight: '700', color: 'var(--color-dark)' }}>4.8 out of 5</span> based on {product.reviewsCount || 94} reviews
+                    <span style={{ fontWeight: '600', color: 'var(--color-text-primary)' }}>4.9 / 5</span>
+                    <span>based on 300+ reviews</span>
                   </div>
-                  <div style={{ background: '#F4F4F5', padding: '20px', borderRadius: 'var(--radius-md)' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
-                       <strong style={{ color: 'var(--color-dark)' }}>Bikash K.</strong>
-                       <span style={{ color: '#A1A1AA', fontSize: '0.85rem' }}>Verified Buyer</span>
+                  <div style={{ background: '#FFFFFF', padding: '20px', borderRadius: 'var(--radius-lg)', border: '1px solid var(--color-border)' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
+                       <strong style={{ color: 'var(--color-text-primary)' }}>Bikash K.</strong>
+                       <span style={{ color: 'var(--color-text-tertiary)', fontSize: '0.8rem' }}>Verified Traveler</span>
                     </div>
-                    <div style={{ display: 'flex', color: '#F59E0B', marginBottom: '12px' }}>
-                       {[...Array(5)].map((_, i) => <Star key={i} size={14} fill="#F59E0B" />)}
-                    </div>
-                    <p style={{ fontStyle: 'italic', lineHeight: '1.6' }}>"Best suitcase I've owned in Nepal. Traveled to Pokhara and Mustang with zero scuffs! The wheels handle uneven roads surprisingly well."</p>
+                    <p style={{ lineHeight: '1.6', margin: 0 }}>"Best suitcase I have owned in Nepal. Traveled to Pokhara and Mustang with zero scuffs. The wheel glide handles rough paving astonishingly well."</p>
                   </div>
                 </div>
               )}
@@ -331,19 +442,28 @@ export default function ProductDetailPage({ product, allProducts = [], onAddToCa
         </div>
       </div>
 
-      {/* Related Products / You May Also Like */}
-      <section style={{ maxWidth: '1280px', margin: '80px auto 0', padding: '0 24px' }}>
+      {/* Related Products */}
+      <section className="pdp-wrapper" style={{ marginTop: '96px' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '32px' }}>
-           <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '2rem', fontWeight: '400', color: 'var(--color-dark)' }}>You May Also Like</h3>
-           <button onClick={() => setActivePage('shop')} style={{ background: 'none', border: 'none', color: '#E11D48', fontWeight: '600', display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer', fontSize: '0.95rem' }}>
-              View All <ChevronRight size={18} />
+           <h3 style={{ fontSize: '1.8rem', fontWeight: '600', letterSpacing: '-0.03em', color: 'var(--color-text-primary)' }}>You May Also Like</h3>
+           <button 
+             onClick={() => setActivePage('shop')} 
+             style={{ 
+               background: 'none', 
+               border: 'none', 
+               color: 'var(--color-text-primary)', 
+               fontWeight: '500', 
+               display: 'flex', 
+               alignItems: 'center', 
+               gap: '6px', 
+               cursor: 'pointer', 
+               fontSize: '0.9rem' 
+             }}
+           >
+              View All <ChevronRight size={16} />
            </button>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px', '@media (minWidth: 768px)': { gridTemplateColumns: 'repeat(2, 1fr)' }, '@media (minWidth: 1024px)': { gridTemplateColumns: 'repeat(4, 1fr)' } }} className="related-grid-custom">
-          <style dangerouslySetInnerHTML={{__html: `
-            @media (min-width: 768px) { .related-grid-custom { grid-template-columns: repeat(2, 1fr) !important; } }
-            @media (min-width: 1024px) { .related-grid-custom { grid-template-columns: repeat(4, 1fr) !important; } }
-          `}} />
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '24px' }}>
           {recommendations.map((rec) => (
             <ProductCard
               key={rec.id}
